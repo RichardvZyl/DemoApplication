@@ -1,0 +1,83 @@
+<div class="dlg-container">
+  <div class="modal-header">
+    <h3>Update User Details</h3>
+    <button
+      type="button"
+      class="btn close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    >
+      <i class="material-icons">clear</i>
+    </button>
+  </div>
+  <form>
+    <div class="modal-body">
+      <div class="form-group">
+        <label for="id" id="idAria">ID:</label>
+        <input
+          #Id
+          type="text"
+          name="id"
+          id="id"
+          class="form-control"
+          aria-describedby="idAria"
+          value="{{ user.id }}"
+          readonly
+        />
+      </div>
+      <div class="row">
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="form-group">
+            <label for="name" id="nameAria">Name:</label>
+            <input
+              #name
+              type="text"
+              name="name"
+              id="name"
+              class="form-control"
+              aria-describedby="nameAria"
+              value="{{ user.name }}"
+            />
+          </div>
+        </div>
+        <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+          <div class="form-group">
+            <label for="surname" id="surnameAria">Surname:</label>
+            <input
+              #surname
+              id="surname"
+              type="text"
+              name="surname"
+              id="surname"
+              class="form-control"
+              aria-describedby="surnameAria"
+              value="{{ user.surname }}"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email" id="emailAria">Email:</label>
+        <input
+          #email
+          id="email"
+          type="email"
+          name="email"
+          id="email"
+          class="form-control"
+          aria-describedby="emailAria"
+          value="{{ user.email }}"
+          style="text-transform: lowercase;"
+        />
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button
+        type="submit"
+        class="btn btn-primary"
+        (click)="updateUser(name.value, surname.value, email.value)"
+      >Save
+      </button>
+    </div>
+  </form>
+</div>

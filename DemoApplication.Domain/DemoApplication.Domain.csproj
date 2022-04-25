@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Roles.cs" />
+    <Compile Remove="Status.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Abstractions\Domain\Domain.csproj" />
+    <ProjectReference Include="..\DemoApplication.Enums\DemoApplication.Enums.csproj" />
+    <ProjectReference Include="..\DemoApplication.Models\DemoApplication.Models.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,251 @@
+<div class="form-section">
+    <div class="container">
+
+        <div class="tabFor-content">
+            <div class="card">
+                <div class="card-header">
+                    <span>Reports</span>
+                </div>
+                <form [formGroup]="form">
+                    <div class="card-body">
+
+                        <div class="form-group">
+                            <label for="report">Report</label>
+                            <mat-select
+                                [(value)]="selectedReport"
+                                id="report"
+                                class="form-control"
+                                formControlName="report"
+                            >
+                                <mat-option
+                                    *ngFor="let report of reports" 
+                                    [value]="report"
+                                >{{ report }}
+                                </mat-option>
+                            </mat-select>
+                            <!-- <small>{{ selectedReport }}</small> -->
+                        </div>
+
+                        <div class="form-group">
+                            <label for="users">Users</label>
+                            <mat-select
+                                [formControl]="selectedUsers"
+                                multiple
+                                id="users"
+                                class="form-control"
+                                formControlName="users"
+                            >
+                                <mat-option 
+                                    *ngFor="let user of users" 
+                                    [value]="user"
+                                >{{user}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="fromDate">From</label>
+                                    <div class="input-group">
+                                        <input 
+                                            matInput
+                                            [matDatepicker]="fromDate"
+                                            id="fromDate"
+                                            class="form-control"
+                                            formControlName="fromDate"
+                                        > 
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <mat-datepicker-toggle matSuffix [for]="fromDate">
+                                                    <i class="material-icons" matDatepickerToggleIcon>arrow_drop_down</i>
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #fromDate></mat-datepicker>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="toDate">To</label>
+                                    <div class="input-group">
+                                        <input
+                                            matInput 
+                                            [matDatepicker]="toDate"
+                                            id="toDate"
+                                            class="form-control"
+                                            formControlName="toDate"
+                                        > 
+                                        <div class="input-group-append">
+                                            <span class="input-group-text">
+                                                <mat-datepicker-toggle matSuffix [for]="toDate">
+                                                    <i class="material-icons" matDatepickerToggleIcon>arrow_drop_down</i>
+                                                </mat-datepicker-toggle>
+                                                <mat-datepicker #toDate></mat-datepicker>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="industryType">Industry</label>
+                                    <mat-select
+                                        [(value)]="selectedIndustryType"
+                                        id="IndustryType"
+                                        class="form-control"
+                                        formControlName="industryType"
+                                    >
+                                        <mat-option
+                                            *ngFor="let industryType of industryTypesString" 
+                                            [value]="industryType"
+                                        >{{ industryType }}
+                                        </mat-option>
+                                    </mat-select>
+                                    <!-- <small>{{ selectedIndustryType }}</small> -->
+                                </div>
+                            </div>
+                            <div class="col-6 col-sm-6 col-md-6 col-lg-6">
+                                <div class="form-group">
+                                    <label for="voucherType">Voucher Type</label>
+                                    <mat-select
+                                        [(value)]="selectedVoucherType"
+                                        id="voucherType"
+                                        class="form-control"
+                                        formControlName="voucherType"
+                                    >
+                                        <mat-option
+                                            *ngFor="let voucherType of voucherTypesString"
+                                            [value]="voucherType"
+                                        >{{ voucherType }}
+                                        </mat-option>
+                                    </mat-select>                    
+                                    <!-- <small>{{ selectedVoucherType }}</small> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="format">Format</label>
+                            <mat-select
+                                [formControl]="selectedUsers" 
+                                multiple
+                                id="users"
+                                class="form-control"
+                                formControlName="format"
+                            >
+                                <mat-option
+                                    *ngFor="let format of formats" 
+                                    [value]="format"
+                                >{{format}}
+                                </mat-option>
+                            </mat-select>
+                        </div>
+
+                        <div class="card-btn">
+                            <button 
+                                type="submit"
+                                class="btn btn-primary"
+                            >Request Report</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="mv-hn" style="text-align: center;" >
+    <form [formGroup]="form">
+        <!-- <mat-form-field> -->
+            <div style="margin: auto;">
+
+                <!-- Report dropdown -->
+                <mat-form-field class="uk-fieldset">
+                    <div style="margin: 10px; margin-left: 30px;">
+                        <b><app-label for="report" text="Report"></app-label></b>
+                        <mat-select [(value)]="selectedReport">
+                            <mat-option *ngFor="let report of reports" [value]="report">
+                                {{ report }}
+                            </mat-option>
+                        </mat-select>
+                        <p>{{ selectedReport }}</p>
+                    </div>
+                </mat-form-field>
+
+                
+                <div class="date-picker"> 
+                    <mat-form-field class="uk-fieldset">
+                    <b><mat-label for="fromDate" text="From Date">From Date</mat-label></b>
+                    <input matInput [matDatepicker]="fromDate" > 
+                    <mat-datepicker-toggle matSuffix [for]="fromDate"></mat-datepicker-toggle>
+                    <mat-datepicker #fromDate></mat-datepicker>
+                </mat-form-field>
+                </div>
+                
+                
+                <div class="date-picker">
+                    <mat-form-field class="uk-fieldset">
+                    <b><mat-label for="toDate" text="To Date">To Date</mat-label></b>
+                    <input matInput [matDatepicker]="toDate" > 
+                    <mat-datepicker-toggle matSuffix [for]="toDate"></mat-datepicker-toggle>
+                    <mat-datepicker #toDate></mat-datepicker>
+                    </mat-form-field>
+                </div>
+
+                <div>
+                <mat-form-field>
+                    <div style="margin: 10px;"> 
+                        <b><app-label for="industryType" text="Industry Type"></app-label></b>                    
+                        <mat-select [(value)]="selectedIndustryType">
+                            <mat-option *ngFor="let industryType of industryTypes" [value]="industryType">
+                                {{ industryType }}
+                            </mat-option>
+                        </mat-select>
+                        <p>{{ selectedIndustryType }}</p>
+                    </div>
+                </mat-form-field>
+                </div>
+
+                <mat-form-field>
+                    <div style="margin: 10px;">
+                        <b><app-label for="voucherType" text="Voucher Type"></app-label></b>
+                        <mat-select [(value)]="selectedVoucherType">
+                            <mat-option *ngFor="let voucherType of voucherTypes" [value]="voucherType">
+                                {{ voucherType }}
+                            </mat-option>
+                        </mat-select>                    
+                        <p>{{ selectedVoucherType }}</p>
+                    </div>
+                </mat-form-field>
+
+                <div>
+                <mat-form-field>
+                    <div style="margin: 10px;">
+                        <b><app-label for="user" text="Users"></app-label></b>
+                        <mat-select [formControl]="selectedUsers" multiple>
+                            <mat-option *ngFor="let user of users" [value]="user">
+                                {{user}}
+                            </mat-option>
+                        </mat-select>
+                    </div>
+                </mat-form-field>
+                </div>
+
+            </div>
+            
+            <div class="uk-margin uk-text-center">
+                <app-button text="Request Report" [disabled]="form.invalid" (click)="requestReport()"></app-button>
+            </div>
+        <!-- </mat-form-field> -->
+    </form>
+</div>
+
+ <!--TODO build in ng-if that changes the filter form to accomodate the different filters based on the type of report chosen-->
+ <!--TODO fix datetime picker type-->
+ <!--TODO Reports require styling-->

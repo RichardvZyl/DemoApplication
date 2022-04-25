@@ -1,0 +1,99 @@
+<div class="dlg-container">
+  <div class="modal-header">
+    <h3>Maker Checker Details</h3>
+    <button
+      type="button"
+      class="btn close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    >
+      <i class="material-icons">clear</i>
+    </button>
+  </div>
+  <form>
+    <div class="modal-body" data-backdrop="static">
+      <div class="">
+        <dl class="row">
+
+          <dt class="col-sm-4">ID:</dt>
+          <dd class="col-sm-8">{{ makerChecker.id }}</dd>
+
+          <dt class="col-sm-4">Action:</dt>
+          <dd class="col-sm-8">{{ makerCheckerActions[makerChecker.action!] }}</dd>
+
+          <dt class="col-sm-4">Context:</dt>
+          <dd class="col-sm-8">{{ makerChecker.context }}</dd>
+
+          <dt class="col-sm-4">Maker User ID:</dt>
+          <dd class="col-sm-8">{{ makerChecker.makerUser }}</dd>
+
+          <dt class="col-sm-4">Checker User ID:</dt>
+          <dd class="col-sm-8">{{ makerChecker.checkerUser }}</dd>      
+          
+          <dt class="col-sm-4">Maker User:</dt>
+          <dd class="col-sm-8">{{ makerChecker.makerUserString }}</dd>
+
+          <dt class="col-sm-4">Checker User:</dt>
+          <dd class="col-sm-8">{{ makerChecker.checkerUserString }}</dd>  
+
+          <dt class="col-sm-4">Accepted:</dt>
+          <dd class="col-sm-8">{{ makerChecker.accepted ? 'Yes':'No'  }}</dd>
+
+          <dt class="col-sm-4">Action Date:</dt>
+          <dd class="col-sm-8">{{ makerChecker.checkerDate | date: 'yyyy-MM-dd HH:mm' }}</dd> <!--  -->
+
+          <dt class="col-sm-4">Motivation:</dt>
+          <dd class="col-sm-8">{{ makerChecker.makerDate | date: 'yyyy-MM-dd HH:mm' }}</dd> <!--  -->
+
+          <dt class="col-sm-4">File IDs:</dt>
+          <dd class="col-sm-8">{{ makerChecker.files }}</dd>
+
+          <dt class="col-sm-4">File Names:</dt>
+          <dd class="col-sm-8">{{ makerChecker.fileNames }}</dd>
+
+          <dt class="col-sm-4">Model:</dt>
+          <dd class="col-sm-8">{{ makerChecker.model }}</dd>
+          
+        </dl>
+      </div>
+      <!-- <div class="form-group"></div> -->
+      <ul>
+        <li *ngFor="let file of filesForDownload">
+          {{ file.name }}
+        <button
+          id="downloadButton" 
+          class="btn btn-sm btn-outline-primary"
+          type="button"
+          (click)="downloadFile(file)">
+          Download
+        </button>
+        </li>
+      </ul>
+      </div>
+    <div class="modal-footer">
+      <!-- <button type="file" class="pop-up-submit-button" aria-label="upload" (click)="handleFileInput($event.target.files)">Accept</button> -->
+      <button
+        *ngIf="!makerChecker.accepted"
+        type="button"
+        class="btn btn-outline-primary"
+        aria-label="accept"
+        (click)="acceptChanges()"
+      >Accept
+      </button>
+      <button
+        *ngIf="!makerChecker.accepted"
+        type="button"
+        class="btn btn-primary"
+        aria-label="decline"
+        (click)="declineChanges()"
+      >Decline
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  $('#NgbdModalMakerCheckerContentComponent').on('hidden.bs.modal', function () {
+    location.reload();
+    })
+</script>

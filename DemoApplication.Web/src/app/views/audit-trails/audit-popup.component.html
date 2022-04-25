@@ -1,0 +1,40 @@
+<div class="dlg-container">
+    <div class="modal-header">
+      <h3>Audit Entry Details</h3>
+      <button
+        type="button"
+        class="btn close"
+        aria-label="Close"
+        (click)="activeModal.dismiss('Cross click')"
+      >
+        <i class="material-icons">clear</i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="">
+        <dl class="row">
+          <dt class="col-sm-4">ID:</dt>
+          <dd class="col-sm-8">{{ auditEntry.id }}</dd>
+  
+          <dt class="col-sm-4">Date:</dt>
+          <dd class="col-sm-8">{{ auditEntry.date | date: 'yyyy-MM-dd HH:mm' }}</dd> <!--   -->
+  
+          <dt class="col-sm-4">User ID:</dt>
+          <dd class="col-sm-8">{{ auditEntry.userId }}</dd>
+
+          <dt class="col-sm-4">User:</dt>
+          <dd class="col-sm-8">{{ auditEntry.user }}</dd>
+  
+          <dt class="col-sm-4">Display Context:</dt>
+          <dd class="col-sm-8">{{ auditEntry.displayContext }}</dd>
+
+          <dt class="col-sm-4">Model:</dt>
+          <dd class="col-sm-8">{{ auditEntry.model }}</dd>
+
+          <dt class="col-sm-4">Contents ID:</dt>
+          <dd class="col-sm-8">{{ auditEntry.contents }}</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  

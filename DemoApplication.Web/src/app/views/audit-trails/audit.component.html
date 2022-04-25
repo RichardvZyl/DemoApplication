@@ -1,0 +1,255 @@
+<div class="table-section">
+  <div class="container-fluid">
+
+    <div class="tabFor-content">
+      <div class="card">
+        <div class="card-header">
+          <span>Audit</span>
+        </div>
+        <div class="card-body">
+          <div class="card-search">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="search-addon">
+                  <i class="material-icons">search</i>
+                </span>
+              </div>
+              <input
+                matInput 
+                (keyup)="applyFilter($event)"
+                class="form-control"
+                placeholder="Search"
+                aria-label="Search"
+                aria-describedby="search-addon"
+              >
+            </div>
+          </div>
+          <div class="card-table">
+            <mat-table
+              mat-table
+              [dataSource]="dataSource"
+              matSort
+              (matSortChange)="sortData($event)"
+              matSortActive="date"
+              matSortDirection="asc"
+            >
+
+              <!-- ID Column -->
+              <ng-container matColumnDef="id">
+                <mat-header-cell
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >ID</mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry">
+                  {{ auditEntry.id }}
+                </mat-cell>        
+              </ng-container>
+
+              <!-- Date Column -->
+              <ng-container matColumnDef="date">
+                <mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                >Date
+                </mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry">
+                  {{ auditEntry.date | date: 'yyyy-MM-dd HH:mm' }} <!--  -->
+                </mat-cell>
+              </ng-container>
+
+              <!-- User ID Column -->
+              <ng-container matColumnDef="userId">
+                <mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                >User ID
+                </mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry">
+                  {{ auditEntry.userId }}
+                </mat-cell>
+              </ng-container>
+
+              <!-- User Name Column -->
+              <ng-container matColumnDef="user">
+                <mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                >User ID
+                </mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry">
+                  {{ auditEntry.user }}
+                </mat-cell>
+            </ng-container>
+
+              <!-- Display Context Column -->
+              <ng-container matColumnDef="displayContext">
+                <mat-header-cell
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Display Context
+                </mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry">
+                  {{ auditEntry.displayContext }}
+                </mat-cell>
+              </ng-container>
+
+              <!-- Model Column -->
+              <ng-container matColumnDef="model">
+                <mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                >Model
+                </mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry">
+                  {{ auditEntry.model }}
+                </mat-cell>
+              </ng-container>
+
+              <!-- Contents Column -->
+              <ng-container matColumnDef="relatedId">
+                <mat-header-cell
+                  *matHeaderCellDef
+                  mat-sort-header
+                >Contents
+                </mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry">
+                  {{ auditEntry.contents }}
+                </mat-cell>
+              </ng-container>
+
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                <mat-header-cell
+                  *matHeaderCellDef 
+                  mat-header
+                  class="action-head"
+                ><span>Action</span>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let auditEntry" class="action-cell">
+                  <span>
+                    <button 
+                      (click)="open(auditEntry)"
+                      class="btn btn-primary"
+                      matTooltip="Open"
+                      matTooltipPosition="above"
+                    ><i class="material-icons">visibility</i>
+                    </button>
+                  </span>
+                </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+
+            <mat-paginator
+              [pageSizeOptions]="[10, 20, 30, 40, 50]"
+            ></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="mv-hn filter-header">
+        <mat-form-field>
+          <input matInput (keyup)="applyFilter($event)" placeholder="Filter">
+        </mat-form-field>
+    </div>
+
+    <div class="mv-hn div-table">
+
+      <mat-table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="sortData($event)"
+        matSortActive="date"
+        matSortDirection="asc"
+        class="table"
+      >
+
+        <!-- ID Column -->
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>ID</mat-header-cell>
+          <mat-cell *matCellDef="let auditEntry">
+              {{ auditEntry.id }}</mat-cell>        
+        </ng-container>
+
+        <!-- Date Column -->
+        <ng-container matColumnDef="date">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            Date
+          </mat-header-cell>
+          <mat-cell *matCellDef="let auditEntry">
+            {{ auditEntry.date | date: 'yyyy-MM-dd HH:mm' }} <!--  -->
+          </mat-cell>
+        </ng-container>
+
+        <!-- User ID Column -->
+        <ng-container matColumnDef="userId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              User ID
+            </mat-header-cell>
+            <mat-cell *matCellDef="let auditEntry">
+              {{ auditEntry.userId }}
+            </mat-cell>
+        </ng-container>
+
+        <!-- User Name Column -->
+        <ng-container matColumnDef="user">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>
+            User ID
+          </mat-header-cell>
+          <mat-cell *matCellDef="let auditEntry">
+            {{ auditEntry.user }}
+          </mat-cell>
+      </ng-container>
+
+        <!-- Display Context Column -->
+        <ng-container matColumnDef="displayContext">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Display Context
+            </mat-header-cell>
+            <mat-cell *matCellDef="let auditEntry">
+              {{ auditEntry.displayContext }}
+            </mat-cell>
+        </ng-container>
+
+        <!-- Model Column -->
+        <ng-container matColumnDef="model">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Model
+            </mat-header-cell>
+            <mat-cell *matCellDef="let auditEntry">
+              {{ auditEntry.model }}
+            </mat-cell>
+        </ng-container>
+
+        <!-- Contents Column -->
+        <ng-container matColumnDef="relatedId">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>
+              Contents
+            </mat-header-cell>
+            <mat-cell *matCellDef="let auditEntry">
+              {{ auditEntry.contents }}
+            </mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="action" class="action-column">
+          <mat-header-cell *matHeaderCellDef mat-header class="table-action-header">Action</mat-header-cell>
+          <mat-cell *matCellDef="let auditEntry" class="action-cell">
+            <button (click)="open(auditEntry)" class="button" >View</button>
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+
+      <mat-paginator [pageSizeOptions]="[10, 20, 30, 40, 50]" class="table"></mat-paginator>
+
+    </div>
+
+  </div>
+</div>

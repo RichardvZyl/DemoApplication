@@ -1,0 +1,52 @@
+$primary-color: #031a63;
+$contentBg-color: #e6ebf0;
+
+.layout-base {
+  position: relative;
+  color: $primary-color;
+}
+
+.layout-topnav {
+  position: fixed;
+  top: 0;
+  z-index: 150;
+  width: 100%;
+}
+
+.layout-container {
+  position: relative;
+  top: 62px;
+  bottom: 44px;
+  left: 0;
+  right: 0;
+}
+
+.layout-container.mat-drawer-container {
+  background-color: $contentBg-color;
+  color: $primary-color;
+}
+
+.full-sideNav.mat-drawer {
+  position: fixed;
+  top: 62px;
+  align-items: left;
+  justify-content: left;
+  width: 250px;
+  background: $primary-color;
+}
+
+.layout-content-main {
+  background-color: $contentBg-color;
+  padding-left: 0;
+}
+
+.layout-content-main .content-section {
+  padding-bottom: 44px;
+}
+
+.layout-content-main .footer-sticky {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+}

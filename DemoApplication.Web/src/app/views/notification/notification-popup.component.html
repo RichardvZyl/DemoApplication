@@ -1,0 +1,58 @@
+<div class="dlg-container">
+  <div class="modal-header">
+    <h3>Notification Details</h3>
+    <button
+      type="button"
+      class="cbtn closelose"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    >
+      <i class="material-icons">clear</i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="">
+      <dl class="row">
+        <dt class="col-sm-4">Originator:</dt>
+        <dd class="col-sm-8">{{ notification.originator }}</dd>
+
+        <dt class="col-sm-4">Originator Name:</dt>
+        <dd class="col-sm-8">{{ notification.originatorString }}</dd>
+
+        <dt class="col-sm-4">Severity:</dt>
+        <dd class="col-sm-8">{{ severity[notification.severity!] }}</dd>
+
+        <dt class="col-sm-4">Description:</dt>
+        <dd class="col-sm-8">{{ notification.description }}</dd>
+
+        <dt class="col-sm-4">Date:</dt>
+        <dd class="col-sm-8">{{ notification.date | date: 'yyyy-MM-dd HH:mm' }}</dd> <!-- -->
+
+        <dt class="col-sm-4">Read:</dt>
+        <dd class="col-sm-8">{{ notification.read ? 'Yes':'No'  }}</dd>
+        
+        <dt class="col-sm-4">Seen By:</dt>
+        <dd class="col-sm-8">{{ notification.seenBy }}</dd>        
+        
+        <dt class="col-sm-4">Seen By User:</dt>
+        <dd class="col-sm-8">{{ notification.seenByUser }}</dd>
+        
+        <dt class="col-sm-4">Seen At:</dt>
+        <dd class="col-sm-8">{{ notification.seenAt | date: 'yyyy-MM-dd HH:mm' }}</dd> <!-- -->
+
+        <dt class="col-sm-4">For Role:</dt>
+        <dd class="col-sm-8">{{ role[notification.forRole!] }}</dd>
+
+        <dt class="col-sm-4">Related ID:</dt>
+        <dd class="col-sm-8">{{ notification.relatedId }}</dd>
+
+        <dt class="col-sm-4">Related Description:</dt>
+        <dd class="col-sm-8">{{ notification.relatedDescription }}</dd>
+
+        <dt class="col-sm-4">Entity:</dt>
+        <dd class="col-sm-8">{{ entity[notification.entity!] }}</dd>
+        
+      </dl>
+    </div>
+  </div>
+</div>

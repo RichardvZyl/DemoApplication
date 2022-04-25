@@ -1,0 +1,46 @@
+
+    <div class="dlg-container">
+        <div class="modal-header">
+          <h3>Motivation</h3>
+          <button
+            type="button"
+            class="btn close"
+            aria-label="Close"
+            (click)="activeModal.dismiss('Cross click')"
+          >
+            <i class="material-icons">clear</i>
+          </button>
+        </div>
+  
+        <div class="modal-body">
+          <div class="form-group">
+              <label for="motivation" >Motivation: </label>
+              <textarea class="form-control" #motivationInput id="motivation" rows="5" cols="50" text="Motivation"></textarea>
+          </div>
+            <input type="file" class="btn btn-sm" formControlName="File" id="file" (change)="handleFileInput($event)">
+            <li *ngFor="let file of filesForUpload">
+              {{ file.name }}
+            <button
+              id="removeButton"
+              class="btn btn-sm btn-outline-primary"
+              type="button"
+              (click)="removeFile(file)">
+              Remove
+            </button>
+          </div>
+  
+          <div class="modal-footer">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            (click)="submit(motivationInput.value)"
+          >Save
+          </button>
+      </div>
+
+      
+<script>
+  $('#NgbdModalMotivationContentComponent').on('hidden.bs.modal', function () {
+    location.reload();
+    })
+</script>

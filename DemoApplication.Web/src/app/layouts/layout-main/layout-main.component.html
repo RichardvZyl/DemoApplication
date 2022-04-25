@@ -1,0 +1,40 @@
+<div class="layout-base">
+
+    <div class="layout-topnav">
+        <app-header
+            (clickHamburgerEvent)="sideNav.toggle()"
+        ></app-header>
+    </div>
+
+    <mat-sidenav-container [hasBackdrop]="false" class="layout-container">
+
+        <mat-sidenav #sideNav mode="side" position="start" opened role="navigation" class="full-sideNav">
+            <app-nav></app-nav>
+        </mat-sidenav>
+
+        <mat-sidenav-content class="layout-content" role="main">
+
+            <div class="layout-content-main">
+                <div class="content-section">
+                    <router-outlet></router-outlet>
+                </div>
+                <div class="footer-sticky">
+                    <app-footer></app-footer>
+                </div>
+            </div>
+
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+
+</div>
+
+<div class="mv-hn layout-wrapper">
+    <div class="layout-sidenav">
+        <app-nav></app-nav>
+    </div>
+    <div class="layout-content">
+        <!-- <router-outlet></router-outlet> -->
+        <app-footer></app-footer>
+    </div>
+</div>

@@ -1,0 +1,189 @@
+<div class="table-section">
+  <div class="container-fluid">
+
+    <div class="tabFor-content">
+      <div class="card">
+        <div class="card-header">
+          <span>Maker Checker</span>
+        </div>
+        <div class="card-body">
+          <div class="card-search">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="search-addon">
+                  <i class="material-icons">search</i>
+                </span>
+              </div>
+              <input 
+                matInput 
+                (keyup)="applyFilter($event)" 
+                class="form-control"
+                placeholder="Search" 
+                aria-label="Search"
+                aria-describedby="search-addon"
+              />
+            </div>
+          </div>
+          <div class="card-table">
+            <mat-table [dataSource]="dataSource" matSort>
+      
+              <!-- ID Column -->
+              <ng-container matColumnDef="id">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >ID</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.id}}</mat-cell>
+              </ng-container>
+            
+              <!-- Action Column -->
+              <ng-container matColumnDef="action">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Action</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheckerActions[makerCheck.action]}}</mat-cell>
+              </ng-container>
+            
+              <!-- Maker User ID Column -->
+              <ng-container matColumnDef="makerUserId">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Maker User</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.makerUser}}</mat-cell>
+              </ng-container>
+            
+              <!-- Checker User ID Column -->
+              <ng-container matColumnDef="checkerUserId">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Checker User</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.checkerUser}}</mat-cell>
+              </ng-container>
+
+              <!-- Maker User Column -->
+              <ng-container matColumnDef="makerUser">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Maker User</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.makerUserString}}</mat-cell>
+              </ng-container>
+            
+              <!-- Checker User Column -->
+              <ng-container matColumnDef="checkerUser">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Checker User</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.checkerUserString}}</mat-cell>
+              </ng-container>
+
+              <!-- Accepted Column -->
+              <ng-container matColumnDef="accepted">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Accepted</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.accepted ? 'Yes':'No'  }}</mat-cell>
+              </ng-container>
+
+              <!-- Maker Date Column -->
+              <ng-container matColumnDef="makerDate">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Maker Date</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.makerDate | date: 'yyyy-MM-dd HH:mm'}}</mat-cell>
+              </ng-container>
+
+              <!-- Checker Date Column -->
+              <ng-container matColumnDef="checkerDate">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Checker Date</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.checkerDate | date: 'yyyy-MM-dd HH:mm'}}</mat-cell>
+              </ng-container>
+
+              <!-- Motivation Column -->
+              <ng-container matColumnDef="motivation">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Motivation</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.motivation}}</mat-cell>
+              </ng-container>
+
+              <!-- File IDs Column -->
+              <ng-container matColumnDef="fileIds">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >File IDs</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.fileIds}}</mat-cell>
+              </ng-container>
+
+               <!-- File Names Column -->
+               <ng-container matColumnDef="fileNames">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Files</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.fileNames}}</mat-cell>
+              </ng-container>
+
+              <!-- Model Column -->
+              <ng-container matColumnDef="model">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Model</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.model}}</mat-cell>
+              </ng-container>
+
+              <!-- Context Column -->
+              <ng-container matColumnDef="context">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-sort-header
+                >Context</mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck">{{makerCheck.context}}</mat-cell>
+              </ng-container>
+        
+              <!-- View Column -->
+              <ng-container matColumnDef="view">
+                <mat-header-cell 
+                  *matHeaderCellDef 
+                  mat-header 
+                  class="action-head"
+                ><span>View</span>
+                </mat-header-cell>
+                <mat-cell *matCellDef="let makerCheck" class="action-cell">
+                  <span>
+                    <button
+                      (click)="open(makerCheck)"
+                      class="btn btn-primary"
+                      matTooltip="Open"
+                      matTooltipPosition="above"
+                      aria-label="Open"
+                    ><i class="material-icons">visibility</i>
+                    </button>
+                  </span>
+                </mat-cell>
+              </ng-container>
+            
+              <mat-header-row *matHeaderRowDef="displayedColumns" class="table-header"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+              
+            </mat-table>
+
+            <mat-paginator [pageSizeOptions]="[10, 20, 30, 40, 50]"></mat-paginator>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

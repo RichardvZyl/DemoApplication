@@ -1,0 +1,64 @@
+$primary-color: #031a63;
+$secondary-color: #1f98f9;
+$alert-color: #ffc83c;
+
+#topNav {
+  background-color: #ffffff;
+  padding: 10px 5px 10px;
+}
+
+#topNav .sideNav-toggle {
+  font-size: 24px;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 10px;
+  margin: 0 15px 0 -2px;
+}
+
+#topNav .sideNav-toggle:hover,
+#topNav .sideNav-toggle:focus,
+#topNav .sideNav-toggle:active {
+  color: $secondary-color;
+}
+
+#topNav .navbar-brand img {
+  height: 25px;
+}
+
+#topNav ul {
+  margin-top: 0;
+}
+
+#topNav button {
+  position: relative;
+  color: $primary-color;
+  padding: 0;
+  margin-left: 10px;
+}
+
+#topNav button i {
+  font-size: 24px;
+  line-height: 1.6;
+}
+
+.navBtnCir {
+  position: absolute;
+  top: 11px;
+  right: 4px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.navBtnCir.Nalert {
+  background-color: $alert-color;
+}
+
+.navBtnCir.noti {
+  background-color: $secondary-color;
+}
+
+.navBtnCir.user {
+  background-color: $secondary-color;
+  right: 0px;
+}

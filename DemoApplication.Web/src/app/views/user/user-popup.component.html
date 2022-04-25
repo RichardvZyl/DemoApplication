@@ -1,0 +1,30 @@
+<div class="dlg-container">
+  <div class="modal-header">
+    <h3>User Details</h3>
+    <button
+      type="button"
+      class="btn close"
+      aria-label="Close"
+      (click)="activeModal.dismiss('Cross click')"
+    >
+      <i class="material-icons">clear</i>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="">
+      <dl class="row">
+        <dt class="col-sm-4">ID:</dt>
+        <dd class="col-sm-8">{{ user.id }}</dd>
+
+        <dt class="col-sm-4">Name:</dt>
+        <dd class="col-sm-8">{{ user.name }}</dd>
+
+        <dt class="col-sm-4">Surname:</dt>
+        <dd class="col-sm-8">{{ user.surname }}</dd>
+
+        <dt class="col-sm-4">Email:</dt>
+        <dd class="col-sm-8">{{ user.email }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+$link-color: #b0bdc6;
+$linkAct-color: #ffffff;
+$bold: 700;
+
+#sideNav {
+    padding: 20px 0;
+}
+
+#sideNav ul {
+    border: 0;
+}
+
+#sideNav ul li a {
+    color: $link-color;
+    padding: 10px 20px;
+}
+
+#sideNav ul li a:hover, a:focus, a:active {
+    color: $linkAct-color;
+    padding: 10px 20px;
+}
+
+#sideNav ul li.active a {
+    color: $linkAct-color;
+    font-weight: $bold;
+}
+
+#sideNav ul li a i {
+    vertical-align: text-bottom;
+    margin-right: 15px;
+}
+
+#sideNav ul li a span {
+    position: relative;
+    top: -2px;
+}
+
+#sideNav ul li hr {
+    width: calc(100% - 40px);
+    border-top: solid #ffffff thin;
+    margin: 15px 20px;
+}

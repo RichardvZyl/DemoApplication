@@ -1,0 +1,656 @@
+$primary-color: #031a63;
+$secondary-color: #1f98f9;
+$secondaryDark: darken($secondary-color, 10px);
+$contentBg-color: #e6ebf0;
+$content-border: solid #b0bdc6 thin;
+
+$font: 'Open Sans', sans-serif;
+$bold: 700;
+
+/* ----- utils ----- */
+
+body {
+  font-family: $font;
+  font-weight: 400;
+}
+
+.mat-body, .mat-body-1, .mat-typography {
+  font-family: $font;
+  font-weight: 400;
+}
+
+.t-b {
+  font-weight: $bold;
+}
+
+.rotate90 {
+  transform: rotate(90deg);
+}
+
+.mv-hn {
+  display: none !important;
+}
+
+/* ----- buttons ----- */
+.btn.btn-primary {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:focus {
+  background-color: $secondaryDark;
+  border-color: $secondaryDark;
+}
+
+.btn.btn-outline-primary {
+  color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.btn.btn-outline-primary:hover,
+.btn.btn-outline-primary:active,
+.btn.btn-outline-primary:focus {
+  background-color: $secondary-color;
+  color: white;
+  border-color: $secondary-color;
+}
+
+/* ----- layout ----- */
+
+.table-section,
+.form-section {
+  min-height: calc(100vh - 60.5px - 45px);
+  padding: 35px 0;
+}
+
+@media (min-width: 1200px) {
+  .table-section .container-fluid {
+    width: 90%;
+  }
+
+  .form-section .container {
+    width: 60%;
+  }
+}
+
+/* ----- Auth -----*/
+
+.auth-container.authLgn {
+  padding-top: 120px;
+}
+
+.auth-container.authRgr {
+  padding-top: 80px;
+}
+
+.auth-container.authFpw {
+  padding-top: 80px;
+}
+
+.auth-container.authNpw {
+  padding-top: 80px;
+}
+
+.auth-container .auth-logo {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-container .auth-logo img {
+  width: 300px
+}
+
+.auth-container .auth-body {
+  background-color: #ffffff;
+  color: $primary-color;
+  padding: 20px;
+  border: $content-border;
+  margin-bottom: 20px;
+}
+
+.auth-container .auth-body .auth-heading {
+  margin-bottom: 15px
+}
+
+.auth-container .auth-body .auth-heading h4 {
+  font-size: 18px;
+  font-weight: $bold;
+  color: $primary-color;
+  margin-bottom: 0;
+}
+
+.auth-container .auth-body .auth-paragraph {
+  padding-bottom: 20px;
+  border-bottom: solid #efefef thin;
+  margin-bottom: 20px;
+}
+
+.auth-container .auth-body label {
+  margin-bottom: 6px;
+}
+
+.auth-container .auth-body .form-check-label {
+  margin-bottom: 0px;
+}
+
+.auth-container .auth-body .input-group .input-group-text {
+  background-color: white;
+  color: $primary-color;
+  padding: .375rem .2rem;
+}
+
+.auth-container .auth-body .input-group .form-control {
+  border-left: 0;
+}
+
+.auth-container .auth-body a {
+  cursor: pointer;
+  color: $secondary-color;
+  font-weight: $bold;
+}
+
+.auth-container .auth-body hr {
+  margin: 20px 0;
+}
+
+.auth-container .auth-body .auth-btn {
+  text-align: center;
+}
+
+.auth-container .auth-body .auth-btn .btn {
+  font-weight: $bold;
+  margin: 5px;
+}
+
+.auth-container .auth-body .auth-btn .btn.auth-btn-sm {
+  min-width: 125px;
+}
+
+.auth-container .auth-body .auth-btn .btn.auth-btn-md {
+  min-width: 145px;
+}
+
+.auth-container .auth-body .auth-btn .btn.auth-btn-lg {
+  min-width: 165px;
+}
+
+.auth-container .auth-footer {
+  text-align: center;
+}
+
+.auth-container .auth-footer span {
+  margin-right: 5px;
+}
+
+.auth-container .auth-footer a {
+  cursor: pointer;
+  color: $secondary-color;
+  font-weight: $bold;
+}
+
+/* ----- Modals ----- */
+
+.modal-sm {
+  max-width: 375px;
+}
+
+.modal-content {
+  background-color: #ffffff;
+}
+
+.dlg-container {
+  height: auto;
+}
+
+.dlg-container .modal-header {
+  padding: 0.8rem 1.2rem;
+}
+
+.dlg-container .modal-header h3 {
+  position: relative;
+  top: 4px;
+  font-size: 20px;
+  font-weight: $bold;
+  color: $primary-color;
+  margin-bottom: 0;
+}
+
+.dlg-container .modal-header .close {
+  padding: 0;
+  margin: 4px 0 0;
+}
+
+.dlg-container .modal-body {
+  color: $primary-color;
+  padding: 1rem 1.2rem;
+
+  label {
+    margin-bottom: 5px;
+  }
+
+  dl {
+    margin-bottom: 0;
+  }
+
+  dt {
+    font-weight: $bold;
+  }
+
+  dt, dd {
+    min-height: 25px;
+  }
+
+  dd {
+    word-break: break-word;
+  }
+
+  .form-group:last-child {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.dlg-container .modal-footer {
+  justify-content: center;
+  padding: 0.8rem;
+  margin:0;
+}
+
+.dlg-container .modal-footer .btn {
+  min-width: 125px;
+}
+
+/* ----- Forms & Tables ----- */
+
+.tabFor-content {}
+
+.tabFor-content .card {
+  border: $content-border;
+  border-radius: 0;
+}
+
+.tabFor-content .card .card-header {
+  padding: 16px 1.25rem;
+  background-color: #ffffff;
+  border-bottom: $content-border;
+}
+
+.tabFor-content .card .card-header span {
+  display: inline-block;
+  padding: 5px 0;
+  font-size: 18px;
+  font-weight: $bold;
+  color: $primary-color
+}
+.tabFor-content .card .card-header button {
+  float: right;
+  font-weight: $bold;
+}
+
+.tabFor-content .card .card-body {
+  color: $primary-color;
+}
+
+.tabFor-content .card .card-body .card-search {
+overflow: hidden;
+}
+
+.tabFor-content .card .card-body .card-search .input-group {
+  float: right;
+  width: 265px;
+}
+
+.tabFor-content .card .card-body .card-search .input-group .input-group-text {
+  color: $secondary-color;
+  padding: 4px 8px;
+  border-top-left-radius: 1.25rem;
+  border-bottom-left-radius: 1.25rem;
+}
+
+.tabFor-content .card .card-body .card-search .input-group .form-control {
+  padding: 0;
+  border-left: 0;
+  border-right: $content-border;
+  border-top-right-radius: 1.25rem;
+  border-bottom-right-radius: 1.25rem;
+}
+
+.tabFor-content .card .card-body .card-text {
+  margin-bottom: 15px;
+}
+
+.tabFor-content .card .card-body label {
+  margin-bottom: 6px;
+}
+
+.tabFor-content .card .card-body .card-title {
+  font-family: $font;
+  font-size: 14px;
+  font-weight: $bold;
+}
+
+.tabFor-content .card .card-body 
+.mat-checkbox-checked:not(.mat-checkbox-disabled).mat-accent 
+.mat-ripple-element, 
+.mat-checkbox:active:not(.mat-checkbox-disabled).mat-accent 
+.mat-ripple-element {
+  background: $secondary-color;
+}
+
+.tabFor-content .card .card-body 
+.mat-checkbox-indeterminate.mat-accent 
+.mat-checkbox-background, 
+.mat-checkbox-checked.mat-accent 
+.mat-checkbox-background {
+  background-color: $secondary-color;
+}
+
+.tabFor-content .card .card-body .input-group-text {
+  background-color: #ffffff;
+  padding: 0
+}
+
+.tabFor-content .card .card-body
+.mat-input-element {
+  background: #ffffff;
+  color: $primary-color;
+  border: 1px solid #ced4da;
+  border-right: 0;
+  margin-top: 0;
+}
+
+.tabFor-content .card .card-body
+.mat-icon-button {
+  line-height: 1;
+  height: 32px;
+  border-radius: 0;
+}
+
+.tabFor-content .card .card-body
+.mat-datepicker-toggle-active {
+  color: $secondary-color;
+}
+
+.tabFor-content .card .card-body .card-table table {
+  width: 100%;
+  overflow: auto;
+}
+
+.tabFor-content .card .card-body .card-table 
+.mat-header-cell, .mat-sort-header-button {
+  font-size: 14px;
+  font-weight: $bold;
+  color: $primary-color;
+}
+
+.tabFor-content .card .card-body .card-table 
+mat-cell:first-of-type, 
+mat-header-cell:first-of-type, 
+mat-footer-cell:first-of-type {
+  padding-left: 0 !important;
+}
+
+.tabFor-content .card .card-body .card-table 
+th.mat-header-cell:first-of-type, 
+td.mat-cell:first-of-type, 
+td.mat-footer-cell:first-of-type {
+  padding-left: 0 !important;
+}
+
+.tabFor-content .card .card-body .card-table 
+mat-cell:last-of-type, 
+mat-header-cell:last-of-type, 
+mat-footer-cell:last-of-type {
+  padding-right: 0 !important;
+}
+
+.tabFor-content .card .card-body .card-table 
+th.mat-header-cell:last-of-type, 
+td.mat-cell:last-of-type, 
+td.mat-footer-cell:last-of-type {
+  padding-right: 0 !important;
+}
+
+.tabFor-content .card .card-body .card-table
+.mat-cell {
+  text-align: center;
+}
+
+.tabFor-content .card .card-body .card-table
+.mat-cell.price-cell span {
+  margin-left: auto !important;
+  padding-right: 10px;
+}
+
+.tabFor-content .card .card-body .card-table
+mat-row .action-cell .btn {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-size: 10px;
+  padding: 3px 0 0;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+.tabFor-content .card .card-body .card-table
+mat-row .action-cell .btn i {
+  font-size: 18px;
+}
+
+.tabFor-content .card .card-body .card-table
+.mat-header-cell.action-head span,
+.mat-cell.action-cell span {
+  margin-left: auto !important;
+}
+
+.tabFor-content .card .card-body .card-table .highlight {
+  background: rgba(238, 96, 96, 0.801);
+}
+
+.tabFor-content .card .card-footer {
+  text-align: center;
+  padding: 18px 1.25rem;
+  background-color: #ffffff;
+  border-top: $content-border;
+}
+
+.tabFor-content .card .card-btn {
+  text-align: center;
+}
+
+.tabFor-content .card .card-btn .btn {
+  width: 165px;
+  font-weight: 700;
+  margin: 5px;
+}
+
+
+/* ----- */
+
+.header-buttons {
+  text-align: right;
+}
+
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.entitlement-setup {
+  margin-left: 50px;
+}
+
+main {
+  background-color: #fff;
+  flex: auto;
+  padding: 1rem !important;
+}
+
+input.ng-dirty.ng-valid,
+input.ng-touched.ng-valid,
+select.ng-dirty.ng-valid,
+select.ng-touched.ng-valid,
+textarea.ng-dirty.ng-valid,
+textarea.ng-touched.ng-valid,
+.ng-dirty.ng-valid > input,
+.ng-touched.ng-valid > input,
+.ng-dirty.ng-valid > select,
+.ng-touched.ng-valid > select,
+.ng-dirty.ng-valid > textarea,
+.ng-touched.ng-valid > textarea {
+  background-color: #edfbf6;
+  border: 0.05rem solid #32d296;
+  color: #32d296;
+}
+
+input.ng-dirty.ng-invalid,
+input.ng-touched.ng-invalid,
+select.ng-dirty.ng-invalid,
+select.ng-touched.ng-invalid,
+textarea.ng-dirty.ng-invalid,
+textarea.ng-touched.ng-invalid,
+.ng-dirty.ng-invalid > input,
+.ng-touched.ng-invalid > input,
+.ng-dirty.ng-invalid > select,
+.ng-touched.ng-invalid > select,
+.ng-dirty.ng-invalid > textarea,
+.ng-touched.ng-invalid > textarea {
+  background-color: #fef4f6;
+  border: 0.05rem solid #f0506e;
+  color: #f0506e;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+:disabled > input,
+:disabled > select,
+:disabled > textarea {
+  background-color: #f8f8f8 !important;
+  border-color: #e5e5e5 !important;
+  color: #999 !important;
+}
+
+.icon {
+  vertical-align: text-bottom;
+}
+
+.nav {
+  border: 1px solid #ddd;
+  height: 100%;
+}
+
+.nav-active * {
+  color: #000;
+  font-weight: 500;
+}
+
+/*
+    Above included at project start
+    Below added by Richard
+*/
+
+.pop-up-submit-button {
+  width: 100%;
+  //height: 20px;
+}
+
+#file.pop-up-submit-button {
+  width: 100%;
+  //height: 20px;
+}
+
+.type-input {
+  width: 100%;
+}
+
+.password-input {
+  max-width: 100%;
+  width: 100%;
+  border: 0 none;
+  padding: 0 10px;
+  background: #fff;
+  color: #666;
+  border: 1px solid #e5e5e5;
+  transition: 0.2s ease-in-out;
+  transition-property: color, background-color, border;
+}
+
+.div-table-container {
+  margin-bottom: 20px;
+  overflow: auto;
+  max-height: 250px;
+}
+
+.table {
+  text-align: left;
+  width: 100%;
+}
+
+.filter-header {
+  margin-top: 20px;
+  background-color: grey;
+  width: 100%;
+}
+
+.type-table {
+  width: 100%;
+  overflow: auto;
+}
+
+.div-table-container {
+  border: 1px solid grey;
+}
+
+.type-input {
+  width: 70%;
+}
+
+.type-input-button {
+  width: 30%;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+}
+
+.form input[type='text'] {
+  flex: 10;
+  padding: 5px;
+}
+
+.form input[type='submit'] {
+  flex: 2;
+}
+
+.mat-form-field-infix {
+  text-align: left;
+  align-self: justify;
+}
+
+/* Table */
+.md-tbl-cntr table {
+  width: 100%;
+}
+
+.md-tbl-cntr tr.detail-row {
+  height: 0;
+}
+
+.md-tbl-cntr td.mat-cell:first-of-type,
+td.mat-footer-cell:first-of-type,
+th.mat-header-cell:first-of-type {
+  padding-left: 10px;
+}
+
+.md-tbl-cntr td.mat-cell:last-of-type,
+td.mat-footer-cell:last-of-type,
+th.mat-header-cell:last-of-type {
+  padding-right: 10px;
+}

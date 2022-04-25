@@ -1,0 +1,224 @@
+<div class="form-section">
+    <div class="container">
+
+        <div class="tabFor-content">
+            <div class="card">
+                <div class="card-header">
+                    <span>Entitlement</span>
+                </div>
+                <!-- <form [formGroup]="form"> -->
+                    <div class="card-body">
+
+                        <p class="card-text">
+                            Please select the relevant user you would like to assign a role to
+                        </p>
+
+                        <!-- User Dropdown -->
+                        <!-- <div class="form-group"> -->
+                            <label for="user">User</label>
+                            <mat-select
+                                name="user"
+                                [(value)]="selectedUser" 
+                                id="user" 
+                                class="form-control"
+                            >
+                                <mat-option 
+                                    *ngFor="let user of users" 
+                                    [value]="user"
+                                    (onSelectionChange)="userChanged(user, $event)"
+                                > <!--(ngModelChange)="userChanged(user)"-->
+                                    {{ user }}
+                                </mat-option>
+                            </mat-select>
+                        <!-- </div> -->
+
+                        <!-- User type Dropdown -->
+                        <!-- <div class="form-group"> -->
+                            <label for="role">Role</label>
+                            <!-- [formControl]="selectedUserType"  -->
+                            <mat-select 
+                                name="role"
+                                [(value)]="selectedUserType"
+                                id="role" 
+                                class="form-control"
+                            >
+                                <mat-option 
+                                    *ngFor="let userType of userTypes" 
+                                    [value]="userType" 
+                                    (onSelectionChange)="userTypeChanged(userType, $event)"
+                                > 
+                                    {{ userType }}
+                                </mat-option>
+                            </mat-select>
+                        <!-- </div> -->
+
+                        <h5 class="card-title">Actions</h5>
+
+                        <!-- Entitlement options -->
+                        <div class="row">
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox 
+                                    id="viewUsers" 
+                                    [(ngModel)]="entitlementExceptions.viewUsers"
+                                    [checked]="entitlementExceptions.viewUsers"
+                                    (change)="exceptionActioned($event)"
+                                >View Users</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox 
+                                    id="viewVouchers" 
+                                    [(ngModel)]="entitlementExceptions.viewVouchers"
+                                    [checked]="entitlementExceptions.viewVouchers"
+                                    (change)="exceptionActioned($event)"
+                                >View Vouchers</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox 
+                                id="viewNotifications"
+                                [(ngModel)]="entitlementExceptions.viewNotifications"
+                                [checked]="entitlementExceptions.viewNotifications"
+                                (change)="exceptionActioned($event)"
+                            >View Notifications</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="suspendUsers"
+                                    [(ngModel)]="entitlementExceptions.suspendUsers"
+                                    [checked]="entitlementExceptions.suspendUsers"
+                                    (change)="exceptionActioned($event)"
+                                >Suspend Users</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="refundVouchers" 
+                                    [(ngModel)]="entitlementExceptions.refundVouchers"
+                                    [checked]="entitlementExceptions.refundVouchers"
+                                    (change)="exceptionActioned($event)"
+                                >Refund Vouchers</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="addVoucherTypes"
+                                    [(ngModel)]="entitlementExceptions.addVoucherTypes"
+                                    [checked]="entitlementExceptions.addVoucherTypes"
+                                    (change)="exceptionActioned($event)"
+                                >Add Voucher Types</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="addIndustryTypes"
+                                    [(ngModel)]="entitlementExceptions.addIndustryTypes"
+                                    [checked]="entitlementExceptions.addIndustryTypes"
+                                    (change)="exceptionActioned($event)"
+                                >Add Industry Types</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="statisticalReport"
+                                    [(ngModel)]="entitlementExceptions.statisticalReport"
+                                    [checked]="entitlementExceptions.statisticalReport"
+                                    (change)="exceptionActioned($event)"
+                                >Statistical Report</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="auditReport"
+                                    [(ngModel)]="entitlementExceptions.auditReport"
+                                    [checked]="entitlementExceptions.auditReport"
+                                    (change)="exceptionActioned($event)"
+                                >Audit Report</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="financialReport"
+                                    [(ngModel)]="entitlementExceptions.financialReport"
+                                    [checked]="entitlementExceptions.financialReport"
+                                    (change)="exceptionActioned($event)"
+                                >Financial Report</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox
+                                    id="authorizeMakerChecker"
+                                    [(ngModel)]="entitlementExceptions.authorizeMakerChecker"
+                                    class="checkbox-inner"
+                                    [checked]="entitlementExceptions.authorizeMakerChecker"
+                                    (change)="exceptionActioned($event)"
+                                >Authorize Maker Checker</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox id="transferVouchers" 
+                                    [(ngModel)]="entitlementExceptions.transferVouchers" 
+                                    class="checkbox-inner" 
+                                    [checked]="entitlementExceptions.transferVouchers" 
+                                    (change)="exceptionActioned($event)"
+                                >Transfer Vouchers</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox id="auditLogs" 
+                                    [(ngModel)]="entitlementExceptions.auditLogs" 
+                                    class="checkbox-inner" 
+                                    [checked]="entitlementExceptions.auditLogs" 
+                                    (change)="exceptionActioned($event)"
+                                    >Audit Logs</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox id="entitlementChange" 
+                                    [(ngModel)]="entitlementExceptions.entitlementChange" 
+                                    class="checkbox-inner" 
+                                    [checked]="entitlementExceptions.entitlementChange" 
+                                    (change)="exceptionActioned($event)"
+                                    >Change Entitlement</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox id="accountingLogs" 
+                                    [(ngModel)]="entitlementExceptions.accountingLogs" 
+                                    class="checkbox-inner" 
+                                    [checked]="entitlementExceptions.accountingLogs" 
+                                    (change)="exceptionActioned($event)"
+                                    >Accounting Logs</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox id="viewMerchants" 
+                                    [(ngModel)]="entitlementExceptions.viewMerchants" 
+                                    class="checkbox-inner" 
+                                    [checked]="entitlementExceptions.viewMerchants" 
+                                    (change)="exceptionActioned($event)"
+                                    >View Merchants</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox id="addMerchants" 
+                                    [(ngModel)]="entitlementExceptions.addMerchants" 
+                                    class="checkbox-inner" 
+                                    [checked]="entitlementExceptions.addMerchants" 
+                                    (change)="exceptionActioned($event)"
+                                    >Add Merchants</mat-checkbox>
+                            </div>
+                            <div class="col-4 col-sm-4 col-md-4 col-lg-4">
+                                <mat-checkbox id="updateMerchants" 
+                                    [(ngModel)]="entitlementExceptions.updateMerchants" 
+                                    class="checkbox-inner" 
+                                    [checked]="entitlementExceptions.updateMerchants" 
+                                    (change)="exceptionActioned($event)"
+                                    >Update Merchants</mat-checkbox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-btn">
+                            <button 
+                                type="submit"
+                                class="btn btn-primary"
+                                (click)="saveUserEntitlement()"
+                            >Assign Role</button>
+                        </div>
+                    </div>
+                <!-- </form> -->
+            </div>
+        </div>
+
+        <!-- <div class="uk-margin uk-text-center">
+            <app-button text="Save" (click)="saveUserEntitlement()"></app-button>
+        </div> -->
+        
+    </div>
+</div>

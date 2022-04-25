@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="User\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.JsonPatch" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+	<PackageReference Include="Serilog.Extensions.Logging" Version="3.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Abstractions\Extensions\Extensions.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Objects\Objects.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Results\Results.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Security\Security.csproj" />
+    <ProjectReference Include="..\..\Abstractions\Validator\Validator.csproj" />
+    <ProjectReference Include="..\DemoApplication.Database\DemoApplication.Database.csproj" />
+    <ProjectReference Include="..\DemoApplication.Domain\DemoApplication.Domain.csproj" />
+    <ProjectReference Include="..\DemoApplication.Entitlement\DemoApplication.Entitlement.csproj" />
+    <ProjectReference Include="..\DemoApplication.Factory\DemoApplication.Factory.csproj" />
+    <ProjectReference Include="..\DemoApplication.Models\DemoApplication.Models.csproj" />
+    <ProjectReference Include="..\DemoApplication.Validators\DemoApplication.Validators.csproj" />
+  </ItemGroup>
+</Project>
