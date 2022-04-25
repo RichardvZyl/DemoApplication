@@ -2,7 +2,8 @@
 
 public enum EntityEnum
 {
-    User,
+    User = 1,
     Entitlement,
-    MakerChecker
+    MakerChecker,
+    Report
 }
