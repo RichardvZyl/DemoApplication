@@ -11,12 +11,10 @@ public enum RolesEnum
 
 public class DecryptRoles
 {
-    public static bool ShouldDecrypt(RolesEnum role)
-    {// TODO: should pull this from DB
-        return (role == RolesEnum.Administrator
-             || role == RolesEnum.Interface
-             || role == RolesEnum.Supervisor)
-        ? true : false;
-    }
+    public static bool ShouldDecrypt(RolesEnum role) 
+        //TODO: Fetch from db should not be hardcoded
+        => role is RolesEnum.Administrator
+             or RolesEnum.Interface
+             or RolesEnum.Supervisor;
 }
 
