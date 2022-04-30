@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Abstractions.AspNetCore;
 using Abstractions.Results;
 using DemoApplication.Entitlement;
 using DemoApplication.Enums;
@@ -54,16 +53,27 @@ public sealed class MakerCheckersController : ControllerBase
     /// <param name="makerChecker"></param>
     /// <returns>Guid</returns>
     /// <remarks> Request disabling a user by sending the user ID and receiving a result response </remarks>
+    /// <response code="200">ID returned for created Maker Cheker</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(Guid))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpPost("SuspendUser")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(IResult<Guid>))]
     [Authorize(Roles = "Administrator,Financial,Supervisor")]
     public async Task<IActionResult> SuspendUserAsync(NewMakerCheckerModel makerChecker)
     {
         var currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
 
         if (!User.HasClaim(x => x.Value == Claims.SuspendUsers))
-            return await Task.FromResult((IActionResult)Unauthorized());
+            return await Task.FromResult((IActionResult)Forbid());
 
         if (User.HasClaim(x => x.Value == Claims.AuthorizeMakerChecker))
         {//If a user can Authorize Maker Checker he can do the action directly
@@ -80,9 +90,20 @@ public sealed class MakerCheckersController : ControllerBase
     /// <param name="makerChecker"></param>
     /// <returns>Guid</returns>
     /// <remarks> Register a new user </remarks>
+    /// <response code="200">ID returned for created Maker Cheker</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(Guid))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpPost("Register")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(IResult<Guid>))]
     [AllowAnonymous]
     public async Task<IActionResult> RegisterAsync(NewMakerCheckerModel makerChecker)
     {
@@ -97,9 +118,20 @@ public sealed class MakerCheckersController : ControllerBase
     /// <param name="makerChecker"></param>
     /// <returns>Result</returns>
     /// <remarks> Change a users password </remarks>
+    /// <response code="200">ID returned for created Maker Cheker</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(Guid))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpPost("ChangePassword")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(IResult))]
     [AllowAnonymous]
     public async Task<IActionResult> ChangePassword(NewMakerCheckerModel makerChecker)
     {
@@ -114,17 +146,27 @@ public sealed class MakerCheckersController : ControllerBase
     /// <returns>Result</returns>
     /// <param name="makerChecker"></param>
     /// <remarks> Change User entitlement/role </remarks>
+    /// <response code="200">ID returned for created Maker Cheker</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(Guid))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpPost("Entitlement")]
     [MapToApiVersion("1")]
-    [DisableRequestSizeLimit]
-    [ProducesResponseType(200, Type = typeof(IResult<Guid>))]
     [Authorize(Roles = "Administrator,Financial,Supervisor")]
     public async Task<IActionResult> EntitlementAsync(NewMakerCheckerModel makerChecker)
     {
         var currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
 
         if (!User.HasClaim(x => x.Value == Claims.EntitlementChange))
-            return await Task.FromResult((IActionResult)Unauthorized());
+            return await Task.FromResult((IActionResult)Forbid());
 
         if (User.HasClaim(x => x.Value == Claims.AuthorizeMakerChecker))
         {//If a user can Authorize Maker Checker he can do the action directly
@@ -149,38 +191,77 @@ public sealed class MakerCheckersController : ControllerBase
     /// <returns>MakerCheckerModel</returns>
     /// <param name="id"></param>
     /// <remarks> Request a Maker Checker entry by supplying the GUID </remarks>
+    /// <response code="200">Succesfull result returns Maker Cheker</response>
+    /// <response code="204">No Maker Cheker found with given ID</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(MakerCheckerModel))]
+    [ProducesResponseType(204, Type = typeof(NoContentResult))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpGet("{id}")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(MakerCheckerModel))]
     [Authorize(Roles = "Administrator,Financial,Supervisor")]
-    public async Task<IActionResult> GetAsync(Guid id) 
+    public async Task<IActionResult> GetAsync(Guid id)
         => !User.HasClaim(x => x.Value == Claims.AuthorizeMakerChecker)
-            ? await Task.FromResult((IActionResult)Unauthorized())
+            ? await Task.FromResult((IActionResult)Forbid())
             : await _makerCheckerService.GetByIdAsync(id).ResultAsync();
 
     /// <summary> Get a specific Maker Checker Entry files </summary>
     /// <returns>MakerCheckerModel</returns>
     /// <param name="id"></param>
     /// <remarks> Request a Maker Checker entry' files by supplying the GUID </remarks>
+    /// <response code="200">Succesfull result returns Maker Cheker</response>
+    /// <response code="204">No Maker Cheker found with given ID</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(MakerCheckerModel))]
+    [ProducesResponseType(204, Type = typeof(NoContentResult))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpGet("Documents/{id}")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(MakerCheckerModel))]
     [Authorize(Roles = "Administrator,Financial,Supervisor")]
-    public async Task<IActionResult> GetFilesAsync(Guid id) 
+    public async Task<IActionResult> GetFilesAsync(Guid id)
         => !User.HasClaim(x => x.Value == Claims.AuthorizeMakerChecker)
-            ? await Task.FromResult((IActionResult)Unauthorized())
+            ? await Task.FromResult((IActionResult)Forbid())
             : await _makerCheckerService.GetByIdAsync(id).ResultAsync();
 
     /// <summary> Get a list of all Maker Checkers </summary>
     /// <returns>MakerCheckerModel[]</returns>
     /// <remarks> Request a list of all Maker Checkers </remarks>
+    /// <response code="200">Succesfull result returnsa list of Maker Chekers</response>
+    /// <response code="204">No Maker Cheker found with given ID</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(IEnumerable<MakerCheckerModel>))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpGet]
     [MapToApiVersion("1")]
     [ProducesResponseType(200, Type = typeof(IEnumerable<MakerCheckerModel>))]
     [Authorize(Roles = "Administrator,Financial,Supervisor")]
-    public async Task<IActionResult> ListAsync() 
+    public async Task<IActionResult> ListAsync()
         => !User.HasClaim(x => x.Value == Claims.AuthorizeMakerChecker)
-            ? await Task.FromResult((IActionResult)Unauthorized())
+            ? await Task.FromResult((IActionResult)Forbid())
             : await _makerCheckerService.ListAsync().ResultAsync();
     #endregion
 
@@ -189,14 +270,26 @@ public sealed class MakerCheckersController : ControllerBase
     /// <returns>Result</returns>
     /// <param name="id"></param>
     /// <remarks> Approve a Maker Checker entry and action the original request </remarks>
+    /// <response code="200">Succesfull result returns result of Maker Cheker acceptance</response>
+    /// <response code="204">No Maker Cheker found with given ID</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(OkResult))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpPost("Approve/{id}")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(IResult))]
     [Authorize(Roles = "Administrator,Supervisor")]
     public async Task<IActionResult> Approve(Guid id)
     {
         if (!User.HasClaim(x => x.Value == Claims.AuthorizeMakerChecker))
-            return await Task.FromResult((IActionResult)Unauthorized());
+            return await Task.FromResult((IActionResult)Forbid());
 
         var currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
 
@@ -207,14 +300,26 @@ public sealed class MakerCheckersController : ControllerBase
     /// <returns>Result</returns>
     /// <param name="id"></param>
     /// <remarks> Deny a Maker Checker Entry and take no further action </remarks>
+    /// <response code="200">Succesfull result returns result of Maker Cheker Denial</response>
+    /// <response code="204">No Maker Cheker found with given ID</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(OkResult))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpPost("Deny/{id}")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(IResult))]
     [Authorize(Roles = "Administrator,Supervisor")]
     public async Task<IActionResult> Deny(Guid id)
     {
         if (!User.HasClaim(x => x.Value == Claims.AuthorizeMakerChecker))
-            return await Task.FromResult((IActionResult)Unauthorized());
+            return await Task.FromResult((IActionResult)Forbid());
 
         var currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
 

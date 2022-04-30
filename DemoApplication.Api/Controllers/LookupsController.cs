@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Abstractions.Extensions;
 using DemoApplication.Enums;
-using DemoApplication.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

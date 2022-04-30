@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Abstractions.AspNetCore;
 using Abstractions.Results;
 using DemoApplication.Entitlement;
 using DemoApplication.Enums;
@@ -33,14 +32,27 @@ public sealed class UsersController : ControllerBase
     /// <returns>UserModel</returns>
     /// <param name="id"></param>
     /// <remarks> Request user details by providing the user id and receiving the user model as a response </remarks>
+    /// <response code="200">Succesfull result returns user with provided ID</response>
+    /// <response code="204">No user found with provided ID</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(UserModel))]
+    [ProducesResponseType(204, Type = typeof(NotFoundResult))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpGet("{id}")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(UserModel))]
     [Authorize(Roles = "Administrator,Financial,Supervisor,Clerk")]
     public async Task<IActionResult> GetAsync(Guid id)
     {
         if (!User.HasClaim(x => x.Value == Claims.ViewUsers))
-            return await Task.FromResult((IActionResult)Unauthorized());
+            return await Task.FromResult((IActionResult)Forbid());
 
         var currentUserRole = Enum.Parse<RolesEnum>(User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value!);
 
@@ -50,34 +62,54 @@ public sealed class UsersController : ControllerBase
     /// <summary> Retrieve the currently logged in user </summary>
     /// <returns>UserModel</returns>
     /// <remarks> Request user details of the currently signd in user, receiving the user model as a response </remarks>
+    /// <response code="200">Succesfull result returns current user</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(UserModel))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpGet("Current")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(UserModel))]
     [Authorize]
     public async Task<IActionResult> GetCurrentAsync()
     {
         var currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
-        //RolesEnum currentUserRole = Enum.Parse<RolesEnum>(User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value!);
+        var currentUserRole = Enum.Parse<RolesEnum>(User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value!);
 
-        return await _userService.GetAsync(currentUserId, RolesEnum.Administrator).ResultAsync();
+        return await _userService.GetAsync(currentUserId, currentUserRole).ResultAsync();
     }
 
     /// <summary> Get a list of all user </summary>
     /// <returns>UserModel[]</returns>
     /// <remarks> Request a list of all saved users </remarks>
+    /// <response code="200">Succesfull result returns all users</response>
+    /// <response code="204">No users found</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(IEnumerable<UserModel>))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(204, Type = typeof(NotFoundResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpGet]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(IEnumerable<UserModel>))]
-    //[Authorize(Roles = "Administrator,Financial,Supervisor,Clerk")]
-    [AllowAnonymous]
+    [Authorize(Roles = "Administrator,Financial,Supervisor,Clerk")]
     public async Task<IActionResult> ListAsync()
     {
-        ////if (!User.HasClaim(x => x.Value == Claims.ViewUsers))
-        ////    return await Task.FromResult((IActionResult)Unauthorized());
+        if (!User.HasClaim(x => x.Value == Claims.ViewUsers))
+            return await Task.FromResult((IActionResult)Forbid());
 
-        //Guid currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
-        //var currentUserRole = Enum.Parse<RolesEnum>(User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value!);
-        var currentUserRole = RolesEnum.Administrator;
+        var currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
+        var currentUserRole = Enum.Parse<RolesEnum>(User.Claims.FirstOrDefault(c => c.Type == "Role")?.Value!);
 
         return await _userService.ListAsync(currentUserRole).ResultAsync();
     }
@@ -87,9 +119,22 @@ public sealed class UsersController : ControllerBase
     /// <param name="userId"></param>
     /// <param name="patchDoc"></param>
     /// <remarks> Request updating a user by providing the new user details and receiving a result </remarks>
+    /// <response code="200">Succesfull result returns Ok result</response>
+    /// <response code="204">No user found with provided ID</response>
+    /// <response code="400">The server cannot or will not process the request due to something that is perceived to be a client error</response>
+    /// <response code="401">Unauthorized client needs to authenticate first</response>
+    /// <response code="403">Forbidden The client does not have access rights to the content</response>
+    /// <response code="422">semantic errors occured</response>
+    /// <response code="500">An unexpected error occured</response>
+    [ProducesResponseType(200, Type = typeof(OkResult))]
+    [ProducesResponseType(204, Type = typeof(NotFoundResult))]
+    [ProducesResponseType(400, Type = typeof(BadRequestResult))]
+    [ProducesResponseType(401, Type = typeof(UnauthorizedResult))]
+    [ProducesResponseType(403, Type = typeof(ForbidResult))]
+    [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [HttpPatch("{userId}")]
     [MapToApiVersion("1")]
-    [ProducesResponseType(200, Type = typeof(IResult))]
     [Authorize(Roles = "Administrator,Financial,Supervisor,Clerk")]
     public async Task<IActionResult> UpdateAsync(Guid userId, [FromBody] JsonPatchDocument<UserModel> patchDoc)
     {
@@ -105,8 +150,11 @@ public sealed class UsersController : ControllerBase
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            //Consider a check to see if user being updated is user logged in
-            return await _userService.UpdateAsync(userModel).ResultAsync();
+            var currentUserId = Guid.Parse(User.Claims.FirstOrDefault(c => c.Type == "Identity")?.Value!);
+
+            return userModel.Id != currentUserId
+                ? Forbid()
+                : await _userService.UpdateAsync(userModel).ResultAsync();
         }
 
         return BadRequest(ModelState);
