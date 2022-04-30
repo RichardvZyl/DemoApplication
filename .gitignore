@@ -48,3 +48,4 @@ DemoApplication.Domain/obj
 *obj
 DemoApplication.Web/.vscode
 DemoApplication.Web/src/.vscode
+/.vs/DemoApplication
