@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Abstractions.IoC;
+using Abstractions.AspNetCore;
 using DemoApplication.Database;
 using Microsoft.Extensions.DependencyInjection;
 using Npgsql;
@@ -23,7 +23,7 @@ public class UniqueCodeSeed : IUniqueCodeSeed
     #region Main Calling function
     public Task<bool> Start(IServiceCollection serviceCollection)
     {
-        _databaseConnectionString = IoCExtensions.GetConnectionString(serviceCollection, nameof(Context));
+        _databaseConnectionString = serviceCollection.GetConnectionString(nameof(Context));
 
         try
         {

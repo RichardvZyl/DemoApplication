@@ -49,7 +49,6 @@
     <ProjectReference Include="..\..\Abstractions\AspNetCore\AspNetCore.csproj" />
     <ProjectReference Include="..\..\Abstractions\EntityFrameworkCore\EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\..\Abstractions\Extensions\Extensions.csproj" />
-    <ProjectReference Include="..\..\Abstractions\IoC\IoC.csproj" />
     <ProjectReference Include="..\..\Abstractions\Logging\Logging.csproj" />
     <ProjectReference Include="..\..\Abstractions\Swagger\Swagger.csproj" />
     <ProjectReference Include="..\DemoApplication.Entitlement\DemoApplication.Entitlement.csproj" />

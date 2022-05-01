@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-using System.Reflection;
 using Abstractions.AspNetCore;
 using Abstractions.EntityFrameworkCore;
 using Abstractions.Security;
@@ -53,8 +50,8 @@ public class Startup
     {
         services.AddCors();
         services.AddSecurity();
-        services.AddCryptography(Abstractions.IoC.IoCExtensions.GetSecrets(services, "CryptoKey"));
-        
+        services.AddCryptography(ServiceExtensions.GetSecrets(services, "CryptoKey"));
+
         services.AddResponseCompression();
         services.AddResponseCaching();
         services.AddControllersDefault();

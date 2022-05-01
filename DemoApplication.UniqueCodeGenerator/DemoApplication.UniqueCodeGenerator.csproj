@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Abstractions\IoC\IoC.csproj" />
+    <ProjectReference Include="..\..\Abstractions\AspNetCore\AspNetCore.csproj" />
     <ProjectReference Include="..\DemoApplication.Database\DemoApplication.Database.csproj" />
   </ItemGroup>
 
