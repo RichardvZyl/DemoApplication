@@ -62,6 +62,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApplication.Entitlement
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entitlement", "..\Abstractions\Entitlement\Entitlement.csproj", "{7A32B5D7-909E-4A03-ABA2-5B1E33E9A457}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Swagger", "..\Abstractions\Swagger\Swagger.csproj", "{BBB4A83C-FFFB-4F50-A4E6-19E44BD5B7F1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -180,6 +182,10 @@ Global
 		{7A32B5D7-909E-4A03-ABA2-5B1E33E9A457}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A32B5D7-909E-4A03-ABA2-5B1E33E9A457}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A32B5D7-909E-4A03-ABA2-5B1E33E9A457}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBB4A83C-FFFB-4F50-A4E6-19E44BD5B7F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBB4A83C-FFFB-4F50-A4E6-19E44BD5B7F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBB4A83C-FFFB-4F50-A4E6-19E44BD5B7F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBB4A83C-FFFB-4F50-A4E6-19E44BD5B7F1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -203,6 +209,7 @@ Global
 		{F29C11D0-AB90-43E4-AE4E-0B1E7C6CEE7F} = {782A71E5-11EA-4A9E-9AF7-6B04CBD5214E}
 		{E672A845-D360-443D-B318-B8F19C1AD01A} = {782A71E5-11EA-4A9E-9AF7-6B04CBD5214E}
 		{7A32B5D7-909E-4A03-ABA2-5B1E33E9A457} = {0F307E2D-3A4C-4BB3-A8A3-02A4FD1CCA31}
+		{BBB4A83C-FFFB-4F50-A4E6-19E44BD5B7F1} = {0F307E2D-3A4C-4BB3-A8A3-02A4FD1CCA31}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5DB03B7-1906-4C40-9920-D9F9FE320BDC}
