@@ -39,6 +39,7 @@ public class Startup
 
         application.UseResponseCompression();
         application.UseResponseCaching();
+
         application.UseAuthentication();
         application.UseAuthorization();
 
@@ -53,6 +54,7 @@ public class Startup
         services.AddCors();
         services.AddSecurity();
         services.AddCryptography(Abstractions.IoC.IoCExtensions.GetSecrets(services, "CryptoKey"));
+        
         services.AddResponseCompression();
         services.AddResponseCaching();
         services.AddControllersDefault();
@@ -63,9 +65,7 @@ public class Startup
 
         services.AddApiVersioning();
 
-        var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-        var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-        services.AddSwagger(xmlPath);
+        services.AddSwagger();
 
         services.AddControllersWithViews();
 
