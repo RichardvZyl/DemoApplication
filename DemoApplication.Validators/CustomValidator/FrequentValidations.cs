@@ -8,7 +8,7 @@ public sealed class EmailValidation : Validator<string>
 {
     public EmailValidation() 
         => RuleFor(x => x)
-            .Matches(Regexes.EmailTested)
+            .Matches(Regexes.Email)
             .WithMessage("Valid email address required.")
             .MaximumLength(250)
             .WithMessage("Maximum length allowed for an email address is 250 characters.");
