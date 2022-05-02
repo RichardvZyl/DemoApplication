@@ -1,7 +1,5 @@
-﻿using DemoApplication.Enums;
-using Abstractions.Domain;
-using System;
-using System.Collections.Generic;
+﻿using Abstractions.Domain;
+using DemoApplication.Enums;
 
 namespace DemoApplication.Domain;
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using DemoApplication.Domain;
 using DemoApplication.Models;
 

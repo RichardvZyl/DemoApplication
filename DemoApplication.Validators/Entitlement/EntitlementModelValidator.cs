@@ -1,6 +1,6 @@
-﻿using FluentValidation;
-using Abstractions.Validator;
+﻿using Abstractions.Validator;
 using DemoApplication.Models;
+using FluentValidation;
 
 namespace DemoApplication.Validator;
 

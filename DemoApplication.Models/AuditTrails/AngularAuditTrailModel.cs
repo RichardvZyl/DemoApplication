@@ -21,20 +21,20 @@ public class AngularAuditTrailModel
     /// the user id causing this audit trail entry
     /// </summary>
     public Guid UserId { get; set; }
-    public string User { get; set; }
+    public string User { get; set; } = string.Empty;
 
     /// <summary>
     /// the display context of this entry - something nice to display on the screen
     /// </summary>
-    public string DisplayContext { get; set; }
+    public string DisplayContext { get; set; } = string.Empty;
 
     /// <summary>
     /// the model used for serialized information
     /// </summary>
-    public string Model { get; set; }
+    public string Model { get; set; } = string.Empty;
 
     /// <summary>
     /// the serialized content
     /// </summary>
-    public string Contents { get; set; }
+    public string Contents { get; set; } = string.Empty;
 }

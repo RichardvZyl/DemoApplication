@@ -12,7 +12,7 @@ public sealed class UserConfiguration : IEntityTypeConfiguration<User>
 
         builder.HasKey(user => user.Id);
 
-        builder.Property(user => user.Id).ValueGeneratedOnAdd().IsRequired(); //.ValueGeneratedOnAdd().
+        builder.Property(user => user.Id).ValueGeneratedOnAdd().IsRequired();
         builder.Property(user => user.Active).IsRequired();
         builder.Property(user => user.Email).IsRequired();
         builder.HasIndex(user => user.Email).IsUnique();

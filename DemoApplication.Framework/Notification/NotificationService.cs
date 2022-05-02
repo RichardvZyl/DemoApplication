@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using DemoApplication.Database;
 using DemoApplication.Domain;
 using DemoApplication.Enums;
@@ -56,9 +52,7 @@ public sealed class NotificationService : INotificationService
         var validation = await new AddNotificationModelValidator().ValidateAsync(model);
 
         if (validation.Failed)
-        {
             return Result<Guid>.Fail(validation.Message);
-        }
 
         var notification = NotificationFactory.Create(model);
 

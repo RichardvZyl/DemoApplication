@@ -1,30 +1,30 @@
-﻿using FluentValidation;
-using Abstractions.Validator;
+﻿using Abstractions.Validator;
 using DemoApplication.Models;
+using FluentValidation;
 
 namespace DemoApplication.Validator;
 
 /// <summary>  user model validator </summary>
 public abstract class UserModelValidator : Validator<UserModel>
 {
-    public void RuleForAuth() 
+    public void RuleForAuth()
         => RuleFor(x => x.Auth)
             .SetValidator(new AuthModelValidator());
 
-    public void RuleForEmail() 
+    public void RuleForEmail()
         => RuleFor(x => x.Email)
             .SetValidator(new EmailValidation());
 
-    public void RuleForId() 
+    public void RuleForId()
         => RuleFor(x => x.Id)
             .NotEmpty();
 
-    public void RuleForName() 
+    public void RuleForName()
         => RuleFor(x => x.Name)
             .NotEmpty()
             .MaximumLength(50);
 
-    public void RuleForSurname() 
+    public void RuleForSurname()
         => RuleFor(x => x.Surname)
             .NotEmpty()
             .MaximumLength(50);

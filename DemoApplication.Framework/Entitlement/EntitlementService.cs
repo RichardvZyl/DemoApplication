@@ -1,10 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using Abstractions.Security;
 using DemoApplication.ClaimExceptions;
 using DemoApplication.Database;
-using DemoApplication.Domain;
 using DemoApplication.Enums;
 using DemoApplication.Factory;
 using DemoApplication.Models;
@@ -82,7 +79,7 @@ public sealed class EntitlementService : IEntitlementService
     #endregion
 
     #region Read
-    public async Task<EntitlementModel> GetByUserIdAsync(Guid id) 
+    public async Task<EntitlementModel> GetByUserIdAsync(Guid id)
         => await _entitlementRepository.GetModelByUserIdAsync(id);
 
     public async Task<EntitlementModel> GetByUserEmailAsync(string userEmail)

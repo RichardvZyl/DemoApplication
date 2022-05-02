@@ -2,9 +2,9 @@
 
 public class NewUserModel
 {
-    public string firstName { get; set; }
-    public string lastName { get; set; }
-    public string email { get; set; }
-    public string password { get; set; }
-    public string confirmPassword { get; set; }
+    public string FirstName { get; set; } = string.Empty;
+    public string LastName { get; set; } = string.Empty;
+    public string Email { get; set; } = string.Empty;
+    public string Password { get; set; } = string.Empty;
+    public string ConfirmPassword { get; set; } = string.Empty;
 }

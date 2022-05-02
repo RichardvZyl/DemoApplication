@@ -1,9 +1,9 @@
-﻿using DemoApplication.Domain;
-using DemoApplication.Models;
-using Abstractions.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abstractions.Repositories;
+using DemoApplication.Domain;
+using DemoApplication.Models;
 
 namespace DemoApplication.Database.AuditTrails
 {

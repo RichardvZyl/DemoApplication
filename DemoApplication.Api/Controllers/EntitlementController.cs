@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Abstractions.AspNetCore;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using DemoApplication.Entitlement;
 using DemoApplication.Enums;
 using DemoApplication.Factory;
@@ -58,7 +54,7 @@ public sealed class EntitlementController : ControllerBase
     [HttpGet("Role/{role}")]
     [MapToApiVersion("1")]
     [Authorize(Roles = "Administrator,Financial,Supervisor")]
-    public async Task<IActionResult> GetDefaultEntitlement(RolesEnum role) 
+    public async Task<IActionResult> GetDefaultEntitlement(RolesEnum role)
         => //if the user cannot change entitlement he does not need to see the entitlement
         !User.HasClaim(x => x.Value == Claims.EntitlementChange)
             ? await Task.FromResult((IActionResult)Forbid())
@@ -123,7 +119,7 @@ public sealed class EntitlementController : ControllerBase
     [HttpGet("User/Role/{email}")]
     [MapToApiVersion("1")]
     [Authorize(Roles = "Administrator,Financial,Supervisor")]
-    public async Task<IActionResult> GetUserRole(string email) 
+    public async Task<IActionResult> GetUserRole(string email)
         => //if the user cannot change entitlement he does not need to see the entitlement
         !User.HasClaim(x => x.Value == Claims.EntitlementChange)
             ? await Task.FromResult((IActionResult)Forbid())

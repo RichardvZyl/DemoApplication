@@ -1,5 +1,4 @@
 ﻿using Abstractions.Domain;
-using System;
 
 namespace DemoApplication.Domain;
 
@@ -33,18 +32,18 @@ public class User : Entity<Guid> //TODO: Implement IdentityUser<Guid> (AspNetCor
     #endregion
 
     #region Interactions
-    public void Activate() 
+    public void Activate()
         => Active = true;
-        //Status = UserStatusEnum.Active;
+    //Status = UserStatusEnum.Active;
 
-    public void Inactivate() 
+    public void Inactivate()
         => Active = false;
-        //Status = UserStatusEnum.Inactive;
+    //Status = UserStatusEnum.Inactive;
 
-    public void ChangeFullName(string name, string surname) 
+    public void ChangeFullName(string name, string surname)
         => FullName = new FullName(name, surname);
 
-    public void ChangeEmail(string email) 
+    public void ChangeEmail(string email)
         => Email = email;
     #endregion
 }

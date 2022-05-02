@@ -1,12 +1,12 @@
-﻿using FluentValidation;
+﻿using Abstractions.Regex;
 using Abstractions.Validator;
-using Abstractions.Regex;
+using FluentValidation;
 
 namespace DemoApplication.Validator;
 
 public sealed class EmailValidation : Validator<string>
 {
-    public EmailValidation() 
+    public EmailValidation()
         => RuleFor(x => x)
             .Matches(Regexes.Email)
             .WithMessage("Valid email address required.")

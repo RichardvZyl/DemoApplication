@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using DemoApplication.Framework;
 using DemoApplication.Models;
 using Microsoft.AspNetCore.Authorization;
@@ -36,7 +35,7 @@ public sealed class AuthsController : ControllerBase
     [ProducesResponseType(204, Type = typeof(NoContentResult))]
     [ProducesResponseType(400, Type = typeof(BadRequestResult))]
     [ProducesResponseType(422, Type = typeof(UnprocessableEntityResult))]
-    [ProducesResponseType(500, Type = typeof(IResult))]
+    [ProducesResponseType(500, Type = typeof(Exception))]
     [AllowAnonymous]
     [MapToApiVersion("1")]
     [ProducesResponseType(200, Type = typeof(TokenModel))]

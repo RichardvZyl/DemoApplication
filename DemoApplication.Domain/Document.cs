@@ -1,5 +1,4 @@
-﻿using System;
-using Abstractions.Domain;
+﻿using Abstractions.Domain;
 using DemoApplication.Models;
 
 namespace DemoApplication.Domain;

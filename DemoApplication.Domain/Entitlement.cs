@@ -1,5 +1,4 @@
-﻿using System;
-using Abstractions.Domain;
+﻿using Abstractions.Domain;
 using DemoApplication.Models;
 
 namespace DemoApplication.Domain;
@@ -45,8 +44,8 @@ public class Entitlement : Entity<Guid>
     public bool EntitlementChange { get; private set; }
     public bool AuditLogs { get; private set; }
 
-    public void Update(EntitlementModel entitlementModel) 
-    { 
+    public void Update(EntitlementModel entitlementModel)
+    {
         this.UserId = entitlementModel.UserId;
         this.ViewNotifications = entitlementModel.ViewNotifications;
         this.SuspendUsers = entitlementModel.SuspendUsers;

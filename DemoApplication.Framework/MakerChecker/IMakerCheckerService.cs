@@ -1,21 +1,17 @@
-﻿using DemoApplication.Models;
-using Abstractions.Results;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using Abstractions.Results;
+using DemoApplication.Models;
 
-namespace DemoApplication.Framework
+namespace DemoApplication.Framework;
+
+public interface IMakerCheckerService
 {
-    public interface IMakerCheckerService
-    {
-        Task<IResult<Guid>> AddAsync(NewMakerCheckerModel model, Guid activeUserId);
+    Task<IResult<Guid>> AddAsync(NewMakerCheckerModel model, Guid activeUserId);
 
-        Task<MakerCheckerModel> GetByIdAsync(Guid id);
-        Task<IEnumerable<Guid>> GetDocumentsByIdAsync(Guid id);
-        Task<IEnumerable<MakerCheckerModel>> ListAsync();
-        Task<IEnumerable<MakerCheckerModel>> ListNonActionedAsync();
+    Task<MakerCheckerModel> GetByIdAsync(Guid id);
+    Task<IEnumerable<Guid>> GetDocumentsByIdAsync(Guid id);
+    Task<IEnumerable<MakerCheckerModel>> ListAsync();
+    Task<IEnumerable<MakerCheckerModel>> ListNonActionedAsync();
 
-        Task<IResult> DenyAsync(Guid makerCheckerId, Guid activeUserId);
-        Task<IResult> ApproveAsync(Guid makerCheckerId, Guid activeUserId);
-    }
+    Task<IResult> DenyAsync(Guid makerCheckerId, Guid activeUserId);
+    Task<IResult> ApproveAsync(Guid makerCheckerId, Guid activeUserId);
 }

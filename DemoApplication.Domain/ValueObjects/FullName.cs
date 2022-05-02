@@ -1,5 +1,5 @@
-﻿using Abstractions.Domain;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Abstractions.Domain;
 
 namespace DemoApplication.Domain;
 

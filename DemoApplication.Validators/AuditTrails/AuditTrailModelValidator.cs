@@ -6,28 +6,28 @@ namespace DemoApplication.Validator;
 
 public abstract class AuditTrailModelValidator : Validator<AuditTrailModel>
 {
-    public void RuleForId() 
+    public void RuleForId()
         => RuleFor(x => x.Id)
             .NotEmpty(); //auto generated
 
-    public void RuleForDate() 
+    public void RuleForDate()
         => RuleFor(x => x.Date)
             .LessThanOrEqualTo(DateTimeOffset.MaxValue)
             .GreaterThanOrEqualTo(DateTimeOffset.MinValue);
 
-    public void RuleForUserId() 
+    public void RuleForUserId()
         => RuleFor(x => x.UserId)
             .NotEmpty();
 
-    public void RuleForDisplayContext() 
+    public void RuleForDisplayContext()
         => RuleFor(x => x.DisplayContext)
             .NotEmpty();
 
-    public void RuleForModel() 
+    public void RuleForModel()
         => RuleFor(x => x.Model)
             .NotEmpty();
 
-    public void RuleForContents() 
+    public void RuleForContents()
         => RuleFor(x => x.Contents)
             .NotEmpty();
 }

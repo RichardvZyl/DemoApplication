@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Abstractions.IoC;
+﻿using Abstractions.IoC;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoApplication.Database;
 

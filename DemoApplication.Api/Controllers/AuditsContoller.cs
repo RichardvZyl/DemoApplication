@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using DemoApplication.Entitlement;
 using DemoApplication.Framework;
 using DemoApplication.Models;

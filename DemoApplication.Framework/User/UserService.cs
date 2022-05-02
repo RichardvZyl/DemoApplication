@@ -85,7 +85,8 @@ public sealed class UserService : IUserService
 
         return await Result<Guid>.SuccessAsync(user.Id);
 
-        //TODO Email user to let him know his login is working
+        //TODO: Add Confirm Email Requirement
+        //TODO: Email user to let him know his login is working
     }
     #endregion
 

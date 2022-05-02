@@ -2,7 +2,6 @@
 using Abstractions.IoC;
 using DemoApplication.Database;
 using DemoApplication.Framework;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DemoApplication.Api;
 

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using Abstractions.Security;
 using DemoApplication.ClaimExceptions;
 using DemoApplication.Database;
@@ -86,31 +84,24 @@ public sealed class EntitlementExceptionsService : IEntitlementExceptionsService
     {
         var entitlement = await _exceptionsRepository.GetModelByUserIdAsync(id);
 
-        if (entitlement.ExpiresOn != null)
-        {
-            if (DateTimeOffset.Compare((DateTimeOffset)entitlement.ExpiresOn, DateTimeOffset.UtcNow) > 0)
-            {
-                return new();
-            }
-        }
-
-        return entitlement;
+        return entitlement.ExpiresOn == null
+            ? entitlement
+            : DateTimeOffset.Compare((DateTimeOffset)entitlement.ExpiresOn, DateTimeOffset.UtcNow) > 0
+                ? (new())
+                : entitlement;
     }
     public async Task<EntitlementExceptionsModel> GetByUserEmailAsync(string userEmail)
     {
         var userId = await _userRepository.GetIdByEmail(await _cryptographyService.Encrypt(userEmail));
         var entitlement = await _exceptionsRepository.GetModelByUserIdAsync(userId);
 
-        if (entitlement == null)
-            return new EntitlementExceptionsModel();
-
-        if (entitlement.ExpiresOn != null)
-        {
-            if (DateTimeOffset.Compare((DateTimeOffset)entitlement.ExpiresOn, DateTimeOffset.UtcNow) > 0)
-                return new EntitlementExceptionsModel();
-        }
-
-        return entitlement;
+        return entitlement == null
+            ? new EntitlementExceptionsModel()
+            : entitlement.ExpiresOn == null
+                ? entitlement
+                : DateTimeOffset.Compare((DateTimeOffset)entitlement.ExpiresOn, DateTimeOffset.UtcNow) > 0
+                    ? new EntitlementExceptionsModel()
+                    : entitlement;
     }
     public async Task<IResult<string>> GetRoleByUserEmailAsync(string userEmail)
     {

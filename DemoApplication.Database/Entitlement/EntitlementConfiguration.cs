@@ -1,6 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using DemoApplication.Domain;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using DemoApplication.Domain;
 
 namespace GoBills.DAL.Configurations
 {

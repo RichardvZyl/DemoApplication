@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Abstractions.Results;
+﻿using Abstractions.Results;
 using DemoApplication.Entitlement;
 using DemoApplication.Enums;
 using DemoApplication.Framework;

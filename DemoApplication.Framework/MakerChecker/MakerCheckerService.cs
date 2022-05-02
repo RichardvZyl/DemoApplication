@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 using Abstractions.Results;
 using Abstractions.Security;
 using DemoApplication.Database;
@@ -65,7 +61,7 @@ public sealed class MakerCheckerService : IMakerCheckerService
         if (model.Action == MakerCheckerActionsEnum.CreateUser)
         {
             var userModel = JsonSerializer.Deserialize<NewUserModel>(model.Model);
-            userModel!.password = await _cryptographyService.Encrypt(userModel.password);
+            userModel!.Password = await _cryptographyService.Encrypt(userModel.Password);
             model.Model = JsonSerializer.Serialize(userModel);
         }
 
@@ -104,10 +100,17 @@ public sealed class MakerCheckerService : IMakerCheckerService
     #endregion
 
     #region Read
-    public async Task<MakerCheckerModel> GetByIdAsync(Guid id) => await _makerCheckerRepository.GetByIdAsync(id);
-    public async Task<IEnumerable<Guid>> GetDocumentsByIdAsync(Guid id) => await _makerCheckerRepository.GetDocumentsByIdAsync(id);
-    public async Task<IEnumerable<MakerCheckerModel>> ListAsync() => await _makerCheckerRepository.Queryable.Select(MakerCheckerExpression.Model!).ToListAsync();
-    public async Task<IEnumerable<MakerCheckerModel>> ListNonActionedAsync() => await _makerCheckerRepository.Queryable.Where(MakerCheckerExpression.NonActioned()!).Select(MakerCheckerExpression.Model!).ToListAsync();
+    public async Task<MakerCheckerModel> GetByIdAsync(Guid id)
+        => await _makerCheckerRepository.GetByIdAsync(id);
+
+    public async Task<IEnumerable<Guid>> GetDocumentsByIdAsync(Guid id)
+        => await _makerCheckerRepository.GetDocumentsByIdAsync(id);
+
+    public async Task<IEnumerable<MakerCheckerModel>> ListAsync()
+        => await _makerCheckerRepository.Queryable.Select(MakerCheckerExpression.Model!).ToListAsync();
+
+    public async Task<IEnumerable<MakerCheckerModel>> ListNonActionedAsync()
+        => await _makerCheckerRepository.Queryable.Where(MakerCheckerExpression.NonActioned()!).Select(MakerCheckerExpression.Model!).ToListAsync();
     #endregion
 
     #region Update
@@ -139,7 +142,7 @@ public sealed class MakerCheckerService : IMakerCheckerService
 
         if (actionResult.Failed)
             return await Result.FailAsync(actionResult.Message);
-        
+
         var makerChecker = new MakerChecker(makerCheckerId);
 
         makerChecker.Approve(activeUserId);
@@ -234,17 +237,17 @@ public sealed class MakerCheckerService : IMakerCheckerService
 
         var authModel = new AuthModel
         {
-            Login = model!.email, //All Roles that have access to maker checker can decrypt so no need to ever encrypt
-            Password = decrypt ? await _cryptographyService.Decrypt(model.password) : model.password,
+            Login = model!.Email, //All Roles that have access to maker checker can decrypt so no need to ever encrypt
+            Password = decrypt ? await _cryptographyService.Decrypt(model.Password) : model.Password,
             Role = RolesEnum.Clerk
         };
 
         return new UserModel
         {
             Auth = authModel,
-            Email = model.email,
-            Name = model.firstName,
-            Surname = model.lastName
+            Email = model.Email,
+            Name = model.FirstName,
+            Surname = model.LastName
         };
     }
     #endregion

@@ -1,7 +1,7 @@
-﻿using DemoApplication.Domain;
-using Abstractions.Repositories;
-using System;
+﻿using System;
 using System.Threading.Tasks;
+using Abstractions.Repositories;
+using DemoApplication.Domain;
 
 namespace DemoApplication.Database;
 

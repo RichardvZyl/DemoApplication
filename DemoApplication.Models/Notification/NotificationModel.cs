@@ -11,12 +11,12 @@ public class NotificationModel
     public Guid Id { get; set; }
     public Guid Originator { get; set; }
     public SeverityEnum Severity { get; set; }
-    public string Description { get; set; }
+    public string Description { get; set; } = string.Empty;
     public DateTimeOffset Date { get; set; }
     public bool Read { get; set; }
     public Guid SeenBy { get; set; }
     public DateTimeOffset? SeenAt { get; set; }
     public RolesEnum ForRole { get; set; }
-    public string RelatedId { get; set; }
+    public string RelatedId { get; set; } = string.Empty;
     public EntityEnum Entity { get; set; }
 }

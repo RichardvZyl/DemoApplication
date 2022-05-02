@@ -8,7 +8,7 @@ namespace DemoApplication.Database;
 public static class UserExpression
 {
     #region Values
-    public static Expression<Func<User, Guid>> AuthId() => user => user.Auth.Id;
+    public static Expression<Func<User, Guid>> AuthId() => user => user.Auth!.Id;
     public static Expression<Func<User, Guid>> Id() => user => user.Id;
     public static Expression<Func<User, string>> Name() => user => user.FullName.Name;
     public static Expression<Func<User, string>> Surname() => user => user.FullName.Surname;
@@ -29,6 +29,6 @@ public static class UserExpression
     public static Expression<Func<User, bool>> Email(string email) => user => user.Email == email;
     public static Expression<Func<User, bool>> Id(Guid id) => user => user.Id == id;
 
-    public static Expression<Func<User, bool>> AuthId(Guid id) => user => user.Auth.Id == id;
+    public static Expression<Func<User, bool>> AuthId(Guid id) => user => user.Auth!.Id == id;
     #endregion
 }

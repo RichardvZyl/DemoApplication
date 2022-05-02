@@ -5,8 +5,8 @@ namespace DemoApplication.Factory;
 
 public static class DocumentFactory
 {
-    public static Document Create(DocumentModel model) => 
-        new 
+    public static Document Create(DocumentModel model) =>
+        new
         (
             //model.Id,
             //model.RelatedId,

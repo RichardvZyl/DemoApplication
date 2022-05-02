@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
-using Abstractions.Extensions;
+﻿using Abstractions.Extensions;
 using DemoApplication.Enums;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

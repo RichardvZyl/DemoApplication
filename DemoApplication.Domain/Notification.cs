@@ -1,6 +1,5 @@
-﻿using DemoApplication.Enums;
-using Abstractions.Domain;
-using System;
+﻿using Abstractions.Domain;
+using DemoApplication.Enums;
 
 namespace DemoApplication.Domain
 {
@@ -38,13 +37,13 @@ namespace DemoApplication.Domain
         #region Private Members
         public Guid Originator { get; private set; }
         public SeverityEnum Severity { get; private set; }
-        public string Description { get; private set; }
+        public string Description { get; private set; } = string.Empty;
         public DateTimeOffset Date { get; private set; }
         public bool Read { get; private set; }
         public Guid SeenBy { get; private set; }
         public DateTimeOffset? SeenAt { get; private set; }
         public RolesEnum ForRole { get; private set; }
-        public string RelatedId { get; private set; }
+        public string RelatedId { get; private set; } = string.Empty;
         public EntityEnum Entity { get; private set; }
         #endregion
 

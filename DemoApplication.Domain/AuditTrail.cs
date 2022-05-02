@@ -1,5 +1,4 @@
 ﻿using Abstractions.Domain;
-using System;
 
 namespace DemoApplication.Domain;
 

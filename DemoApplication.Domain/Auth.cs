@@ -1,6 +1,5 @@
-﻿using DemoApplication.Enums;
-using Abstractions.Domain;
-using System;
+﻿using Abstractions.Domain;
+using DemoApplication.Enums;
 
 namespace DemoApplication.Domain;
 
@@ -32,11 +31,11 @@ public sealed class Auth : Entity<Guid>
 
     #region Interactions
     //Email cannot be changed
-    public void ChangePassword(string password) 
+    public void ChangePassword(string password)
         => Password = password;
-    public void ChangeRole(RolesEnum role) 
+    public void ChangeRole(RolesEnum role)
         => Role = role;
-    public void ChangeLogin(string login) 
+    public void ChangeLogin(string login)
         => Email = login;
     #endregion
 }

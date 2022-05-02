@@ -14,13 +14,13 @@ public sealed class MakerCheckerRepository : EFRepository<MakerChecker>, IMakerC
 {
     public MakerCheckerRepository(Context context) : base(context) { }
 
-    public async Task<MakerCheckerModel> GetByIdAsync(Guid id) 
-        => await Queryable.Where(MakerCheckerExpression.Id(id)).Select(MakerCheckerExpression.Model).SingleOrDefaultAsync();
+    public async Task<MakerCheckerModel> GetByIdAsync(Guid id)
+        => await Queryable.Where(MakerCheckerExpression.Id(id)!).Select(MakerCheckerExpression.Model!).SingleOrDefaultAsync() ?? new();
 
-    public async Task<MakerCheckerActionsEnum> GetActionByIdAsync(Guid id) 
-        => await Queryable.Where(MakerCheckerExpression.Id(id)).Select(MakerCheckerExpression.Action()).SingleOrDefaultAsync();
-    public async Task<IEnumerable<Guid>> GetDocumentsByIdAsync(Guid id) 
-        => await Queryable.Where(MakerCheckerExpression.Id(id)).Select(MakerCheckerExpression.Files()).SingleOrDefaultAsync();
-    public Task ApproveDenyAsync(MakerChecker makerChecker) 
+    public async Task<MakerCheckerActionsEnum> GetActionByIdAsync(Guid id)
+        => await Queryable.Where(MakerCheckerExpression.Id(id)!).Select(MakerCheckerExpression.Action()!).SingleOrDefaultAsync();
+    public async Task<IEnumerable<Guid>> GetDocumentsByIdAsync(Guid id)
+        => await Queryable.Where(MakerCheckerExpression.Id(id)!).Select(MakerCheckerExpression.Files()!).SingleOrDefaultAsync() ?? Array.Empty<Guid>();
+    public Task ApproveDenyAsync(MakerChecker makerChecker)
         => UpdatePartialAsync(makerChecker.Id, new { makerChecker.CheckerDate, makerChecker.Accepted, makerChecker.CheckerUser });
 }

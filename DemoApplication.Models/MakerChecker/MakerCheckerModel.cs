@@ -13,7 +13,7 @@ public class MakerCheckerModel
     public bool Accepted { get; set; }
     public DateTimeOffset MakerDate { get; set; }
     public DateTimeOffset? CheckerDate { get; set; }
-    public string Motivation { get; set; }
-    public IEnumerable<Guid> Files { get; set; }
-    public string Model { get; set; }
+    public string Motivation { get; set; } = string.Empty;
+    public IEnumerable<Guid> Files { get; set; } = Array.Empty<Guid>();
+    public string Model { get; set; } = string.Empty;
 }

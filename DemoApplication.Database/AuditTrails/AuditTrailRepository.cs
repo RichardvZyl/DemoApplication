@@ -1,11 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
-using DemoApplication.Domain;
-using DemoApplication.Models;
-using Abstractions.EntityFrameworkCore;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abstractions.EntityFrameworkCore;
+using DemoApplication.Domain;
+using DemoApplication.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace DemoApplication.Database.AuditTrails
 {
@@ -13,10 +13,10 @@ namespace DemoApplication.Database.AuditTrails
     {
         public AuditTrailRepository(Context context) : base(context) { }
 
-        public async Task<AuditTrailModel> GetByIdAsync(Guid id) 
-            => await Queryable.Where(AuditTrailExpression.Id(id)).Select(AuditTrailExpression.Model).SingleOrDefaultAsync();
+        public async Task<AuditTrailModel> GetByIdAsync(Guid id)
+            => await Queryable.Where(AuditTrailExpression.Id(id)!).Select(AuditTrailExpression.Model!).SingleOrDefaultAsync() ?? new();
 
-        public async Task<IEnumerable<AuditTrailModel>> ListLastMonth() 
-            => await Queryable.Where(AuditTrailExpression.LastMonth()).Select(AuditTrailExpression.Model).ToListAsync();
+        public async Task<IEnumerable<AuditTrailModel>> ListLastMonth()
+            => await Queryable.Where(AuditTrailExpression.LastMonth()!).Select(AuditTrailExpression.Model!).ToListAsync();
     }
 }

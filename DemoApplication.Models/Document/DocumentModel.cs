@@ -25,7 +25,7 @@ public class DocumentModel
     /// <summary>
     /// the name of the document
     /// </summary>
-    public string Name { get; set; }
+    public string Name { get; set; } = string.Empty;
 
     /// <summary>
     /// the subject the same as email style
@@ -40,7 +40,7 @@ public class DocumentModel
     /// <summary>
     /// the actual contents of the document
     /// </summary>
-    public byte[] Contents { get; set; }
+    public byte[] Contents { get; set; } = Array.Empty<byte>();
 
     /// <summary>
     /// the date and time when the document was loaded

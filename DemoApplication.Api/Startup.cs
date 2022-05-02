@@ -3,9 +3,6 @@ using Abstractions.EntityFrameworkCore;
 using Abstractions.Security;
 using Abstractions.SwaggerExtension;
 using DemoApplication.Database;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace DemoApplication.Api;
 

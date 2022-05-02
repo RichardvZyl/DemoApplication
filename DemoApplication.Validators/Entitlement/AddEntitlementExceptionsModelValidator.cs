@@ -2,6 +2,6 @@
 
 public sealed class AddEntitlementExceptionsModelValidator : EntitlementExceptionsModelValidator
 {
-    public AddEntitlementExceptionsModelValidator() 
+    public AddEntitlementExceptionsModelValidator()
         => RuleForUserId();
 }
