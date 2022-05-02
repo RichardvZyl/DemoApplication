@@ -1,11 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <!--Project Properties Attributes-->
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!--Internal project references-->
   <ItemGroup>
     <ProjectReference Include="..\DemoApplication.Domain\DemoApplication.Domain.csproj" />
     <ProjectReference Include="..\DemoApplication.Models\DemoApplication.Models.csproj" />

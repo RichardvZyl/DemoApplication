@@ -1,19 +1,27 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!--Project Properties Attributes-->
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!--Nuget.org packages-->
   <ItemGroup>
     <PackageReference Include="FluentValidation" Version="11.0.0" />
   </ItemGroup>
 
+  <!--Internal project references-->
   <ItemGroup>
-    <ProjectReference Include="..\..\Abstractions\Regex\Regex.csproj" />
-    <ProjectReference Include="..\..\Abstractions\Validator\Validator.csproj" />
     <ProjectReference Include="..\DemoApplication.Models\DemoApplication.Models.csproj" />
+  </ItemGroup>
+  
+  <!--personal github nuget packages-->
+  <ItemGroup>
+	<PackageReference Include="AspNetCore" Version="1.0.0" />
+    <PackageReference Include="Validator" Version="1.0.0" />
+    <PackageReference Include="Regex" Version="1.0.0" />
   </ItemGroup>
 
 </Project>

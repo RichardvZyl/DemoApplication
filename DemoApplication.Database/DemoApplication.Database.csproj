@@ -1,34 +1,29 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <!--Project Properties Attributes-->
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+	<ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <!--Nuget.org packages-->
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.4" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.4">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4">
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
-    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />
- </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-    <Folder Include="UnitOfWork\" />
-    <Folder Include="User\" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4" />  
   </ItemGroup>
+	
+  <!--Internal project references-->
   <ItemGroup>
-    <ProjectReference Include="..\..\Abstractions\EntityFrameworkCore\EntityFrameworkCore.csproj" />
-    <ProjectReference Include="..\..\Abstractions\IoC\IoC.csproj" />
-    <ProjectReference Include="..\..\Abstractions\Security\Security.csproj" />
     <ProjectReference Include="..\DemoApplication.Domain\DemoApplication.Domain.csproj" />
     <ProjectReference Include="..\DemoApplication.Models\DemoApplication.Models.csproj" />
   </ItemGroup>
+
+  <!--personal github nuget packages-->
+  <ItemGroup>
+  	<PackageReference Include="EntityFrameworkCore" Version="1.0.0" />
+  	<PackageReference Include="Security" Version="1.0.0" />
+  </ItemGroup>
+	
 </Project>

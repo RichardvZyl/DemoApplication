@@ -1,17 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+	<!--Project Properties Attributes-->
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.16" />
-  </ItemGroup>
+	<!--Nuget.org packages-->
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\Abstractions\Entitlement\Entitlement.csproj" />
-    <ProjectReference Include="..\DemoApplication.Enums\DemoApplication.Enums.csproj" />
-  </ItemGroup>
+	<!--Internal project references-->
+	<ItemGroup>
+		<ProjectReference Include="..\DemoApplication.Enums\DemoApplication.Enums.csproj" />
+	</ItemGroup>
+	
+	<!--personal github nuget packages-->
+	<ItemGroup>
+		<PackageReference Include="Entitlement" Version="1.0.0" />
+	</ItemGroup>
+
 </Project>
