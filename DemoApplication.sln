@@ -24,8 +24,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApplication.Validators"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApplication.Entitlement", "DemoApplication.Entitlement\DemoApplication.Entitlement.csproj", "{71A06ABD-C91A-445B-B6DF-93CD6C3C6A88}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApplication.Factory.tests", "Tests\DemoApplication.Factory.tests\DemoApplication.Factory.tests.csproj", "{F29C11D0-AB90-43E4-AE4E-0B1E7C6CEE7F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DemoApplication.Entitlement.tests", "Tests\DemoApplication.Entitlement.tests\DemoApplication.Entitlement.tests.csproj", "{E672A845-D360-443D-B318-B8F19C1AD01A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D01BA540-6AD0-4B29-84FA-194313452750}"
@@ -36,6 +34,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.tests", "ValidationTests\Validation.tests.csproj", "{7D264ACE-522E-477E-B19D-2034E2F57779}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.tests", "Repository.Tests\Repository.tests.csproj", "{480D7B2D-20A0-451E-A01F-15056C2176D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -83,22 +85,27 @@ Global
 		{71A06ABD-C91A-445B-B6DF-93CD6C3C6A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A06ABD-C91A-445B-B6DF-93CD6C3C6A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A06ABD-C91A-445B-B6DF-93CD6C3C6A88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F29C11D0-AB90-43E4-AE4E-0B1E7C6CEE7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F29C11D0-AB90-43E4-AE4E-0B1E7C6CEE7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F29C11D0-AB90-43E4-AE4E-0B1E7C6CEE7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F29C11D0-AB90-43E4-AE4E-0B1E7C6CEE7F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E672A845-D360-443D-B318-B8F19C1AD01A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E672A845-D360-443D-B318-B8F19C1AD01A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E672A845-D360-443D-B318-B8F19C1AD01A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E672A845-D360-443D-B318-B8F19C1AD01A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D264ACE-522E-477E-B19D-2034E2F57779}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D264ACE-522E-477E-B19D-2034E2F57779}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D264ACE-522E-477E-B19D-2034E2F57779}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D264ACE-522E-477E-B19D-2034E2F57779}.Release|Any CPU.Build.0 = Release|Any CPU
+		{480D7B2D-20A0-451E-A01F-15056C2176D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{480D7B2D-20A0-451E-A01F-15056C2176D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{480D7B2D-20A0-451E-A01F-15056C2176D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{480D7B2D-20A0-451E-A01F-15056C2176D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{DE597A2E-2375-49D7-A37A-99F59EF583E5} = {782A71E5-11EA-4A9E-9AF7-6B04CBD5214E}
-		{F29C11D0-AB90-43E4-AE4E-0B1E7C6CEE7F} = {782A71E5-11EA-4A9E-9AF7-6B04CBD5214E}
 		{E672A845-D360-443D-B318-B8F19C1AD01A} = {782A71E5-11EA-4A9E-9AF7-6B04CBD5214E}
+		{7D264ACE-522E-477E-B19D-2034E2F57779} = {782A71E5-11EA-4A9E-9AF7-6B04CBD5214E}
+		{480D7B2D-20A0-451E-A01F-15056C2176D3} = {782A71E5-11EA-4A9E-9AF7-6B04CBD5214E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D5DB03B7-1906-4C40-9920-D9F9FE320BDC}
