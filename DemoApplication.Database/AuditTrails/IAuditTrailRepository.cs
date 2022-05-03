@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Abstractions.Repositories;
+﻿using Abstractions.Repositories;
 using DemoApplication.Domain;
 using DemoApplication.Models;
 

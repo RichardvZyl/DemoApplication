@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 using DemoApplication.Domain;
 using DemoApplication.Enums;
 using DemoApplication.Models;

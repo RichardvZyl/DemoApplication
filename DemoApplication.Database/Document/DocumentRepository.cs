@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Abstractions.EntityFrameworkCore;
+﻿using Abstractions.EntityFrameworkCore;
 using DemoApplication.Domain;
 using Microsoft.EntityFrameworkCore;
 

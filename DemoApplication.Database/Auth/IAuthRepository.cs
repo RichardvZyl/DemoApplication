@@ -1,5 +1,4 @@
-﻿using System.Threading.Tasks;
-using Abstractions.Repositories;
+﻿using Abstractions.Repositories;
 using DemoApplication.Domain;
 using DemoApplication.Enums;
 
