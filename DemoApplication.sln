@@ -30,14 +30,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		LICENSE = LICENSE
 		nuget.config = nuget.config
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.tests", "ValidationTests\Validation.tests.csproj", "{7D264ACE-522E-477E-B19D-2034E2F57779}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validation.tests", "ValidationTests\Validation.tests.csproj", "{7D264ACE-522E-477E-B19D-2034E2F57779}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repository.tests", "Repository.Tests\Repository.tests.csproj", "{480D7B2D-20A0-451E-A01F-15056C2176D3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Repository.tests", "Repository.Tests\Repository.tests.csproj", "{480D7B2D-20A0-451E-A01F-15056C2176D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
